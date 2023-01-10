@@ -8,26 +8,33 @@ import { formsTranslation } from "../utils/formsTranslation";
 
 function RegisterForm() {
   const navigate = useNavigate();
-  const { language } = useContext(Context) as ContextInterface;
+  const { language, setNameForLogin, setPasswordForLogin } = useContext(Context) as ContextInterface;
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
+  const [remember, setRemember] = useState(false);
   const [error, setError] = useState("");
   const [cookies, setCookie] = useCookies(["token"]);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    try {
-      Meteor.call('users.create', { name, password }, (error: any, result: any) => {
-        if (error) {
-          console.log(error);
-        } else {
-          setCookie('token', result);
-          navigate('/');
-        }
-      });
-    } catch (error: any) {
-      setError(error.response.data.error);
-    }
+    if (remember) {
+      try {
+        Meteor.call('users.create', { name, password }, (error: any, result: any) => {
+          if (error) {
+            console.log(error);
+          } else {
+            setCookie('token', result);
+            navigate('/');
+          }
+        });
+      } catch (error: any) {
+        setError(error.response.data.error);
+      }
+    } else {
+      setNameForLogin(name);
+      setPasswordForLogin(password);
+      navigate('/');
+    };
   }
 
   const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -59,6 +66,15 @@ function RegisterForm() {
           value={ password }
           onChange={ handlePasswordChange }
         />
+      </div>
+      <div>
+        <label htmlFor="remember" className="justify-self-start">{ formsTranslation[language].rememberMe }: </label>
+        <input
+          type="checkbox"
+          name="remember"
+          defaultChecked={ remember }
+          onChange={ () => setRemember(!remember) }
+          />
       </div>
       <button 
         type="submit"

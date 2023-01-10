@@ -5,6 +5,7 @@ type FormsTranslation = {
     confirmPassword: string;
     submit: string;
     login: string;
+    rememberMe: string;
   };
 };
 
@@ -16,6 +17,7 @@ export const formsTranslation: FormsTranslation = {
     confirmPassword: 'Confirm Password',
     submit: 'Register',
     login: 'Login',
+    rememberMe: 'Remember me',
   },
   'pt-BR': {
     username: 'Nome de Usuário',
@@ -23,5 +25,6 @@ export const formsTranslation: FormsTranslation = {
     confirmPassword: 'Confirmar Senha',
     submit: 'Registrar',
     login: 'Entrar',
+    rememberMe: 'Lembrar de mim',
   },
 };

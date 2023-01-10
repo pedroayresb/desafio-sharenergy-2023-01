@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Context from "../context/Context";
 import homepageTranslation from "../utils/homepageTranslation";
-import ContextInterface from "../interfaces/ContextInterface";
+import { ContextInterface } from "../interfaces/ContextInterface";
 
 function RegisterButton() {
   const { language } = React.useContext(Context) as ContextInterface;

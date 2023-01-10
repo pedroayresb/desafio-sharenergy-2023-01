@@ -14,6 +14,9 @@ function App() {
           <Route path="/" element={ <Homepage /> } />
           <Route path="/login" element={ <LoginPage /> } />
           <Route path="/register" element={ <RegisterPage /> } />
+          <Route path="/HTTPCat" element={ <h1>HTTPCat</h1> } />
+          <Route path="/RandomDog" element={ <h1>RandomDog</h1> } />
+          <Route path="/clients" element={ <h1>Clientes</h1> } />
         </Routes>
         <LanguageButton />
       </BrowserRouter>

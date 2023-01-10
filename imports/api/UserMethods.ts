@@ -23,10 +23,23 @@ Meteor.methods({
       throw new Meteor.Error("User already exists");
     };
     const encryptedPassword = crypto.createHash('sha256').update(password).digest('base64').toString();
-    console.log(encryptedPassword);
     const id = UserCollection.insert({ name, password: encryptedPassword });
     const token = jwt.sign({ id }, secret);
     return token;
+  },
+  "users.createWithoutToken"({name, password}) {
+    check(name, String);
+    check(password, String);
+    if(!name || !password) {
+      throw new Meteor.Error("Invalid arguments");
+    };
+    const user = UserCollection.findOne({ name });
+    if(user) {
+      throw new Meteor.Error("User already exists");
+    };
+    const encryptedPassword = crypto.createHash('sha256').update(password).digest('base64').toString();
+    const id = UserCollection.insert({ name, password: encryptedPassword });
+    return id;
   },
   "users.login"({name, password}) {
     check(name, String);
@@ -45,6 +58,22 @@ Meteor.methods({
     const token = jwt.sign({ id: user._id }, secret);
     return token;
   },
+  "users.loginWithoutToken"({name, password}) {
+    check(name, String);
+    check(password, String);
+    if(!name || !password) {
+      throw new Meteor.Error("Invalid arguments");
+    };
+    const user = UserCollection.findOne({ name });
+    if(!user) {
+      throw new Meteor.Error("User does not exist");
+    };
+    const encryptedPassword = crypto.createHash('sha256').update(password).digest('base64');
+    if(user.password !== encryptedPassword) {
+      throw new Meteor.Error("Incorrect password");
+    };
+    return user;
+  },
   "users.loginWithToken"({token}) {
     if (!token) {
       throw new Meteor.Error("Not logged");
@@ -58,15 +87,7 @@ Meteor.methods({
       throw new Meteor.Error("Invalid token");
     }
   },
-  "users.update"({token, name, password}) {
-    if (!token) {
-      throw new Meteor.Error("Not logged");
-    }
-    try {
-      jwt.verify(token, secret);
-    } catch (err) {
-      throw new Meteor.Error("Invalid token");
-    }
+  "users.update"({name, password}) {
     check(name, String);
     check(password, String);
     if(!name || !password) {
@@ -82,15 +103,7 @@ Meteor.methods({
     };
     return UserCollection.update({ name }, { $set: { password } });    
   },
-  "users.delete"({token, name, password}) {
-    if (!token) {
-      throw new Meteor.Error("Not logged");
-    }
-    try {
-      jwt.verify(token, secret);
-    } catch (err) {
-      throw new Meteor.Error("Invalid token");
-    }
+  "users.delete"({name, password}) {
     check(name, String);
     check(password, String);
     if(!name || !password) {

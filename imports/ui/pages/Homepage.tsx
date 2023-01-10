@@ -1,14 +1,17 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Meteor } from "meteor/meteor";
 import { useNavigate } from 'react-router-dom';
 import { useCookies } from 'react-cookie';
 import Context from '../context/Context';
 import { ContextInterface } from '../interfaces/ContextInterface';
-import homepageTranslation from '../utils/homepageTranslation';
+import NavigationButtons from '../components/NavigationButtons';
+import RandomUsersContainer from '../components/RandomUsersContainer';
+import RandomUserFilters from '../components/RandomUserFilters';
+import PageButton from '../components/PageButton';
 
 
 function Homepage() {
-  const { language, user, setUser } = useContext(Context) as ContextInterface;
+  const { language, user, setUser, randomFilteredUsers, nameForLogin, setNameForLogin, passwordForLogin, setPasswordForLogin } = useContext(Context) as ContextInterface;
   const [cookies] = useCookies(['token']);
   const navigate = useNavigate();
 
@@ -21,14 +24,28 @@ function Homepage() {
           setUser(result);
         }
       });
+    } else if (nameForLogin && passwordForLogin) {
+      Meteor.call('users.loginWithoutToken', { name: nameForLogin, password: passwordForLogin }, (error: any, result: any) => {
+        if (error) {
+          console.log(error);
+        } else {
+          setUser(result);
+          setNameForLogin(null);
+          setPasswordForLogin(null);
+        }
+      });
     } else {
-      navigate('/login');
+      navigate('/login')
     }
   }, []);
 
   return (
     <div className="grid place-items-center content-center h-screen">
+      <NavigationButtons />
       <p>{ user?.name }</p>
+      <RandomUserFilters />
+      <RandomUsersContainer />
+      { randomFilteredUsers?.length > 10 && <PageButton /> }
     </div>
   );
 }
