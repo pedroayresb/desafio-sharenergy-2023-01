@@ -9,26 +9,14 @@ function RandomUsersContainer() {
   const [username, setUsername] = useState('');
   
   useEffect(() => {
-    const filteredUsers: Results[] = randomUsers?.filter((user) => {
-      if (!name && !email && !username) {
-        return randomUsers;
-      } else if (name && !email && !username) {
-        return user.name.first.toLowerCase().includes(name.toLowerCase()) || user.name.last.toLowerCase().includes(name.toLowerCase());
-      } else if (!name && email && !username) {
-        return user.email.toLowerCase().includes(email.toLowerCase());
-      } else if (!name && !email && username) {
-        return user.login.username.toLowerCase().includes(username.toLowerCase());
-      } else if (name && email && !username) {
-        return (user.name.first.toLowerCase().includes(name.toLowerCase()) || user.name.last.toLowerCase().includes(name.toLowerCase())) && user.email.toLowerCase().includes(email.toLowerCase());
-      } else if (name && !email && username) {
-        return (user.name.first.toLowerCase().includes(name.toLowerCase()) || user.name.last.toLowerCase().includes(name.toLowerCase())) && user.login.username.toLowerCase().includes(username.toLowerCase());
-      } else if (!name && email && username) {
-        return user.email.toLowerCase().includes(email.toLowerCase()) && user.login.username.toLowerCase().includes(username.toLowerCase());
-      } else if (name && email && username) {
-        return (user.name.first.toLowerCase().includes(name.toLowerCase()) || user.name.last.toLowerCase().includes(name.toLowerCase())) && user.email.toLowerCase().includes(email.toLowerCase()) && user.login.username.toLowerCase().includes(username.toLowerCase());
-      };
-    }) as Results[];
-    setRandomFilteredUsers(filteredUsers);
+    name && setRandomFilteredUsers(randomUsers?.filter((user: Results) => user.name.first.toLowerCase().includes(name.toLowerCase())) as Results[]);
+    email && setRandomFilteredUsers(randomUsers?.filter((user: Results) => user.email.toLowerCase().includes(email.toLowerCase())) as Results[]);
+    username && setRandomFilteredUsers(randomUsers?.filter((user: Results) => user.login.username.toLowerCase().includes(username.toLowerCase())) as Results[]);
+    name && email && setRandomFilteredUsers(randomUsers?.filter((user: Results) => user.name.first.toLowerCase().includes(name.toLowerCase()) && user.email.toLowerCase().includes(email.toLowerCase())) as Results[]);
+    name && username && setRandomFilteredUsers(randomUsers?.filter((user: Results) => user.name.first.toLowerCase().includes(name.toLowerCase()) && user.login.username.toLowerCase().includes(username.toLowerCase())) as Results[]);
+    email && username && setRandomFilteredUsers(randomUsers?.filter((user: Results) => user.email.toLowerCase().includes(email.toLowerCase()) && user.login.username.toLowerCase().includes(username.toLowerCase())) as Results[]);
+    name && email && username && setRandomFilteredUsers(randomUsers?.filter((user: Results) => user.name.first.toLowerCase().includes(name.toLowerCase()) && user.email.toLowerCase().includes(email.toLowerCase()) && user.login.username.toLowerCase().includes(username.toLowerCase())) as Results[]);
+    (!name && !email && !username) && setRandomFilteredUsers(randomUsers as Results[]);
   }, [name, email, username]);
 
 

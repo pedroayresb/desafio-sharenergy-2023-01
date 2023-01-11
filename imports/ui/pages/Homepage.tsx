@@ -7,6 +7,7 @@ import { ContextInterface } from '../interfaces/ContextInterface';
 import NavigationButtons from '../components/NavigationButtons';
 import RandomUsersContainer from '../components/RandomUsersContainer';
 import RandomUserFilters from '../components/RandomUserFilters';
+import NewRandomUsersButton from '../components/NewRandomUsersButton';
 import PageButton from '../components/PageButton';
 
 
@@ -43,9 +44,10 @@ function Homepage() {
     <div className="grid place-items-center content-center h-screen">
       <NavigationButtons />
       <p>{ user?.name }</p>
+      <NewRandomUsersButton />
       <RandomUserFilters />
       <RandomUsersContainer />
-      { randomFilteredUsers?.length > 10 && <PageButton /> }
+      { randomFilteredUsers?.length as Number > 10 && <PageButton /> }
     </div>
   );
 }

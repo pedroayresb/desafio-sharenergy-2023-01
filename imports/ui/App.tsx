@@ -4,6 +4,7 @@ import Provider from './context/Provider';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import Homepage from './pages/Homepage';
+import HTTPCatPage from './pages/HTTPCatPage';
 import LanguageButton from './components/LanguageButton';
 
 function App() {
@@ -14,7 +15,7 @@ function App() {
           <Route path="/" element={ <Homepage /> } />
           <Route path="/login" element={ <LoginPage /> } />
           <Route path="/register" element={ <RegisterPage /> } />
-          <Route path="/HTTPCat" element={ <h1>HTTPCat</h1> } />
+          <Route path="/HTTPCat" element={ <HTTPCatPage /> } />
           <Route path="/RandomDog" element={ <h1>RandomDog</h1> } />
           <Route path="/clients" element={ <h1>Clientes</h1> } />
         </Routes>
