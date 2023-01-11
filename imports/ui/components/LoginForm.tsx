@@ -23,7 +23,7 @@ function LoginForm() {
           if (error) {
             console.log(error);
           } else {
-            setCookie('token', result);
+            setCookie('token', result, { maxAge: 999999999999999 });
             navigate('/');
           }
         });

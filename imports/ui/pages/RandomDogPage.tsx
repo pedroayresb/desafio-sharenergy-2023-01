@@ -1,11 +1,31 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
+import { Meteor } from "meteor/meteor";
+import { useNavigate } from 'react-router-dom';
+import Context from '../context/Context';
+import { ContextInterface } from '../interfaces/ContextInterface';
 import NavigationButtons from '../components/NavigationButtons';
 import randomDog from '../utils/randomDog';
+import { useCookies } from 'react-cookie';
 
 function RandomDog() {
   const [dog, setDog] = useState('');
+  const [cookies] = useCookies(['token']);
+  const { user, setUser } = useContext(Context) as ContextInterface;
+  const navigate = useNavigate();
 
   useEffect(() => {
+    if (cookies) {
+      Meteor.call('users.loginWithToken', { token: cookies.token }, (error: any, result: any) => {
+        if (error) {
+          console.log(error);
+        } else {
+          delete result.password;
+          setUser(result);
+        }
+      });
+    } else if (!user) {
+      navigate('/login')
+    };
     const getDog = async () => {
       const dog = await randomDog();
       setDog(dog);

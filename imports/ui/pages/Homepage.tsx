@@ -22,6 +22,7 @@ function Homepage() {
         if (error) {
           console.log(error);
         } else {
+          delete result.password;
           setUser(result);
         }
       });
@@ -30,6 +31,7 @@ function Homepage() {
         if (error) {
           console.log(error);
         } else {
+          delete result.password;
           setUser(result);
           setNameForLogin(null);
           setPasswordForLogin(null);

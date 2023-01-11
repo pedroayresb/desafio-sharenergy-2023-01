@@ -5,7 +5,8 @@ import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import Homepage from './pages/Homepage';
 import HTTPCatPage from './pages/HTTPCatPage';
-import RandomDog from './pages/RandomDog';
+import RandomDogPage from './pages/RandomDogPage';
+import ClientsPage from './pages/ClientsPage';
 import LanguageButton from './components/LanguageButton';
 
 function App() {
@@ -17,8 +18,8 @@ function App() {
           <Route path="/login" element={ <LoginPage /> } />
           <Route path="/register" element={ <RegisterPage /> } />
           <Route path="/HTTPCat" element={ <HTTPCatPage /> } />
-          <Route path="/RandomDog" element={ <RandomDog /> } />
-          <Route path="/clients" element={ <h1>Clientes</h1> } />
+          <Route path="/RandomDog" element={ <RandomDogPage /> } />
+          <Route path="/clients" element={ <ClientsPage /> } />
         </Routes>
         <LanguageButton />
       </BrowserRouter>

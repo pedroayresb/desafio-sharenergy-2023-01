@@ -81,7 +81,6 @@ Meteor.methods({
     try {
       const decoded = jwt.verify(token, secret) as decoded;
       const user = UserCollection.findOne({ _id: decoded.id });
-      delete user.password;
       return user;
     } catch (err) {
       throw new Meteor.Error("Invalid token");

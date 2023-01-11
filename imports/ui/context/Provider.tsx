@@ -17,7 +17,7 @@ const Provider: React.FC<Props> = ({ children }) => {
   const [page, setPage] = useState(1);
 
   const fetchRandomUsers = async () => {
-    const randomUsers = await getRandomUsers(49) as Results[];
+    const randomUsers = await getRandomUsers(50) as Results[];
     setRandomUsers(randomUsers);
     setRandomFilteredUsers(randomUsers);
   };
