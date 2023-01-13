@@ -45,7 +45,6 @@ function Homepage() {
   return (
     <div className="grid place-items-center content-center h-screen">
       <NavigationButtons />
-      <p>{ user?.name }</p>
       <NewRandomUsersButton />
       <RandomUserFilters />
       <RandomUsersContainer />

@@ -7,7 +7,6 @@ interface props {
   client: ClientsInterface
   index: number
   setEdit: (bool: boolean) => void
-  setClients: (e: any) => void
 }
 
 function EditClientItem(props: props) {
@@ -31,13 +30,6 @@ function EditClientItem(props: props) {
         console.log(error);
       } else {
         props.setEdit(false);
-        Meteor.call('clients.read', (error: any, result: any) => {
-          if (error) {
-            console.log(error);
-          } else {
-            props.setClients(result);
-          }
-        });
       }
   })};
   

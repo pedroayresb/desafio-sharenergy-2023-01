@@ -1,15 +1,23 @@
 import React, { useState } from 'react';
+import { Meteor } from "meteor/meteor";
 import ClientsInterface from '../interfaces/ClientsInterface';
 import EditClientItem from './EditClientItem';
 
 interface props {
   client: ClientsInterface
   index: number
-  setClients: (e: any) => void
 }
 
 function ClientItem(props: props) {
   const [edit, setEdit] = useState(false);
+
+  const removeItem = (id: string | undefined) => {
+    Meteor.call('clients.delete', { id }, (error: any) => {
+      if (error) {
+        console.log(error);
+      }
+    });
+  };
 
   return (
     edit ? ( 
@@ -17,7 +25,6 @@ function ClientItem(props: props) {
       client={ props.client }
       index={ props.index }
       setEdit={ setEdit }
-      setClients={ props.setClients }
     />
     ) : (
     <tr key={ props.index }>
@@ -43,6 +50,12 @@ function ClientItem(props: props) {
           className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'
           onClick={ () => setEdit(true) }
           >Edit</button>
+      </td>
+      <td className='p-10'>
+        <button
+          className='bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded'
+          onClick = { () => { removeItem(props.client._id) } }
+          >Remove</button>
       </td>
     </tr>
   ));

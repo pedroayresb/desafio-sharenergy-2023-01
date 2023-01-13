@@ -4,7 +4,6 @@ import ClientItem from './ClientItem';
 
 interface props {
   clients: ClientsInterface[]
-  setClients: (e: any) => void
 }
 
 function AddedClientsContainer(props: props) {
@@ -19,6 +18,7 @@ function AddedClientsContainer(props: props) {
             <th className='p-10'>Client Phone</th>
             <th className='p-10'>Client Address</th>
             <th className='p-10'>Edit</th>
+            <th className='p-10'>Delete</th>
           </tr>
         </thead>
         <tbody>
@@ -26,7 +26,6 @@ function AddedClientsContainer(props: props) {
               <ClientItem
                 client={ client }
                 index={ index }
-                setClients={ props.setClients }
               />
           )}
         </tbody>

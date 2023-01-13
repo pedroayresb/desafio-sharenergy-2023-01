@@ -2,11 +2,8 @@ import React, { useState } from 'react';
 import { Meteor } from "meteor/meteor";
 import ArrayInputs from './ArrayInputs';
 
-interface props {
-  setClients: (e: any) => void
-}
 
-function ClientsAddForm(props: props) {
+function ClientsAddForm() {
   const [name, setName] = useState('');
   const [cpf, setCpf] = useState('');
   const [email, setEmail] = useState('');
@@ -28,13 +25,6 @@ function ClientsAddForm(props: props) {
       if (error) {
         console.log(error);
       } else {
-        Meteor.call('clients.read', (error: any, result: any) => {
-          if (error) {
-            console.log(error);
-          } else {
-            props.setClients(result);
-          }
-        });
         setName('');
         setCpf('');
         setEmail('');

@@ -1,7 +1,9 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Meteor } from "meteor/meteor";
+import { useSubscribe, useFind } from 'meteor/react-meteor-data';
 import { useNavigate } from 'react-router-dom';
 import Context from '../context/Context';
+import ClientsCollection from '../../api/ClientsCollection';
 import { ContextInterface } from '../interfaces/ContextInterface';
 import ClientsAddForm from '../components/ClientsAddForm';
 import NavigationButtons from '../components/NavigationButtons';
@@ -10,7 +12,6 @@ import { useCookies } from 'react-cookie';
 
 function ClientsPage() {
   const { user, setUser } = useContext(Context) as ContextInterface;
-  const [clients, setClients] = useState([]);
   const [cookies] = useCookies(['token']);
   const navigate = useNavigate();
 
@@ -27,20 +28,20 @@ function ClientsPage() {
     } else if (!user) {
       navigate('/login')
     };
-    Meteor.call('clients.read', (error: any, result: any) => {
-      if (error) {
-        console.log(error);
-      } else {
-        setClients(result);
-      }
-    });
   }, []);
+
+  const isLoading = useSubscribe('clients');
+  const clients = useFind(() => ClientsCollection.find({}));
+
+  if (isLoading()) {
+    return <div>Loading...</div>
+  };
 
   return (
     <div className="flex flex-col items-center justify-center">
       <NavigationButtons />
-      <ClientsAddForm setClients={ setClients } />
-      <AddedClientsContainer clients={ clients } setClients={ setClients } />
+      <ClientsAddForm />
+      <AddedClientsContainer clients={ clients } />
      </div>
   );
 };
