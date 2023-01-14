@@ -1,7 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Meteor } from 'meteor/meteor';
+import Context from '../context/Context';
+import { ContextInterface } from '../interfaces/ContextInterface';
 import EditArrayItem from './EditArrayItem';
 import ClientsInterface from '../interfaces/ClientsInterface';
+import clientPageTranslation from '../utils/clientTranslation';
 
 interface props {
   client: ClientsInterface
@@ -9,16 +12,17 @@ interface props {
   setEdit: (bool: boolean) => void
 }
 
-function EditClientItem(props: props) {
-  const [name, setName] = useState(props.client.name);
+function EditClientItem(props: props) { // componente que renderiza os itens da tabela de clientes caso estejam de modo de edicao
+  const [name, setName] = useState(props.client.name); // estados iniciais que contem o valor do cliente, mas podem ser editados
   const [cpf, setCpf] = useState(props.client.cpf);
   const [emailArray, setEmailArray] = useState(props.client.email);
   const [phoneArray, setPhoneArray] = useState(props.client.phone);
   const [addressArray, setAddressArray] = useState(props.client.address);
-  
+  const { language } = useContext(Context) as ContextInterface;
+
   const { _id } = props.client
 
-  const updateClient = () => {
+  const updateClient = () => { // funcao que atualiza o cliente no banco de dados
     Meteor.call('clients.update', { id: _id,
       name,
       cpf,
@@ -71,7 +75,7 @@ function EditClientItem(props: props) {
         <button
           onClick={ updateClient }
         >
-          Finalizar
+          { clientPageTranslation[language].save }
         </button>
       </td>
     </tr>

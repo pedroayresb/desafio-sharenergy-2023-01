@@ -1,4 +1,7 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import Context from '../context/Context';
+import { ContextInterface } from '../interfaces/ContextInterface';
+import clientPageTranslation from '../utils/clientTranslation';
 
 interface props {
   name: string
@@ -9,9 +12,10 @@ interface props {
 }
 
 function ArrayInputs(props: props) {
+  const { language } = useContext(Context) as ContextInterface;
   return (
     <>
-      <label htmlFor={ props.name }>{ props.name }</label>
+      <label htmlFor={ props.name }>{ clientPageTranslation[language][props.name] }</label>
       <input
         type="text"
         name={ props.name }
@@ -25,7 +29,7 @@ function ArrayInputs(props: props) {
           props.setString('');
         }}
       >
-        Add { props.name }
+        { clientPageTranslation[language][`add${props.name}`] }
       </button>
       {props.array.map((item, index) => (
         <div key={ index }>
@@ -34,7 +38,7 @@ function ArrayInputs(props: props) {
             type="button"
             onClick={() => props.setArray(props.array.filter((_, i) => i !== index))}
           >
-            Delete
+            X
           </button>
         </div>
       ))}

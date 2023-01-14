@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useCookies } from "react-cookie";
 import Context from "../context/Context";
 import { ContextInterface } from "../interfaces/ContextInterface";
-import { formsTranslation } from "../utils/formsTranslation";
+import { formsTranslation } from "../utils/formsTranslation"; // arquivo com as traduções
 
 function RegisterForm() {
   const navigate = useNavigate();
@@ -23,7 +23,7 @@ function RegisterForm() {
           if (error) {
             console.log(error);
           } else {
-            setCookie('token', result);
+            setCookie('token', result, { maxAge: 999999999999999 }); // seta idade do cookie, porem por algum motivo so ta setando para um ano no maximo
             navigate('/');
           }
         });
@@ -31,7 +31,7 @@ function RegisterForm() {
         setError(error.response.data.error);
       }
     } else {
-      setNameForLogin(name);
+      setNameForLogin(name); // caso a pessoa nao queria ser lembrada, seta somente no contexto para ser usado no useEffect do Homepage.tsx
       setPasswordForLogin(password);
       navigate('/');
     };

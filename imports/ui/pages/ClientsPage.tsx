@@ -15,13 +15,13 @@ function ClientsPage() {
   const [cookies] = useCookies(['token']);
   const navigate = useNavigate();
 
-  useEffect(() => {
+  useEffect(() => { // useEffect pra caso a pessoa decidir ir direto pra rota, para checar se realmente está logado
     if (cookies) {
       Meteor.call('users.loginWithToken', { token: cookies.token }, (error: any, result: any) => {
         if (error) {
           console.log(error);
         } else {
-          delete result.password;
+          delete result.password; // não precisa do password no contexto
           setUser(result);
         }
       });
@@ -30,8 +30,8 @@ function ClientsPage() {
     };
   }, []);
 
-  const isLoading = useSubscribe('clients');
-  const clients = useFind(() => ClientsCollection.find({}));
+  const isLoading = useSubscribe('clients'); // se inscreve nas publicacoes meteor de clients
+  const clients = useFind(() => ClientsCollection.find({})); // pega todos os clients
 
   if (isLoading()) {
     return <div>Loading...</div>

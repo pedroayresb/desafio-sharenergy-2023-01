@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Context from "../context/Context";
-import homepageTranslation from "../utils/homepageTranslation";
+import homepageTranslation from "../utils/homepageTranslation"; // arquivo com as traduções
 import { ContextInterface } from "../interfaces/ContextInterface";
 
 function RegisterButton() {

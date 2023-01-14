@@ -64,7 +64,7 @@ interface ContextInterface {
   language: string;
   setLanguage: React.Dispatch<React.SetStateAction<string>>;
   user: UserInterface | null;
-  setUser: React.Dispatch<React.SetStateAction<UserInterface>>;
+  setUser: React.Dispatch<React.SetStateAction<UserInterface | null>>;
   randomUsers: Results[] | null;
   setRandomUsers: React.Dispatch<React.SetStateAction<Results[] | null>>;
   randomFilteredUsers: Results[] | null;

@@ -7,24 +7,25 @@ import NavigationButtons from '../components/NavigationButtons';
 import statusCodes from '../utils/httpCat';
 import CatSelect from '../components/CatSelect';
 import { useCookies } from 'react-cookie';
+import { navigationTranslate } from '../utils/navigationTranslation';
 
 const random = (array: any[]) => {
   return array[Math.floor(Math.random() * array.length)];
 };
 
 function HTTPCatPage() {
-  const { user, setUser } = useContext(Context) as ContextInterface;
+  const { user, setUser, language } = useContext(Context) as ContextInterface;
   const [cookies] = useCookies(['token']);
   const [statusCode, setStatusCode] = useState(random(statusCodes));
   const navigate = useNavigate();
 
-  useEffect(() => {
+  useEffect(() => { // useEffect pra caso a pessoa decidir ir direto pra rota, para checar se realmente está logado
     if (cookies) {
       Meteor.call('users.loginWithToken', { token: cookies.token }, (error: any, result: any) => {
         if (error) {
           console.log(error);
         } else {
-          delete result.password;
+          delete result.password; // não precisa do password no contexto
           setUser(result);
         }
       });
@@ -36,7 +37,7 @@ function HTTPCatPage() {
   return (
     <div className="flex flex-col items-center justify-center">
       <NavigationButtons />
-      <h1 className="text-3xl font-bold">HTTP Cat</h1>
+      <h1 className="text-3xl font-bold">{ navigationTranslate[language].HTTPCat }</h1>
       <div className="flex flex-col items-center justify-center">
         <CatSelect onSelect={(id) => setStatusCode(parseInt(id))} />
         <img src={`https://http.cat/${statusCode}`} alt="HTTP Cat" />

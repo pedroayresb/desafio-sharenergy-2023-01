@@ -1,24 +1,28 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import Context from '../context/Context';
+import { ContextInterface } from '../interfaces/ContextInterface';
 import ClientsInterface from '../interfaces/ClientsInterface';
 import ClientItem from './ClientItem';
+import clientPageTranslation from '../utils/clientTranslation';
 
 interface props {
   clients: ClientsInterface[]
 }
 
 function AddedClientsContainer(props: props) {
+  const { language } = useContext(Context) as ContextInterface;
   return (
     <div>
       <table>
         <thead>
           <tr>
-            <th className='p-10'>Client Name</th>
-            <th className='p-10'>Client CPF</th>
-            <th className='p-10'>Client Email</th>
-            <th className='p-10'>Client Phone</th>
-            <th className='p-10'>Client Address</th>
-            <th className='p-10'>Edit</th>
-            <th className='p-10'>Delete</th>
+            <th className='p-10'>{ clientPageTranslation[language].name }</th>
+            <th className='p-10'>{ clientPageTranslation[language].cpf }</th>
+            <th className='p-10'>{ clientPageTranslation[language].email }</th>
+            <th className='p-10'>{ clientPageTranslation[language].phone }</th>
+            <th className='p-10'>{ clientPageTranslation[language].address }</th>
+            <th className='p-10'>{ clientPageTranslation[language].editClient }</th>
+            <th className='p-10'>{ clientPageTranslation[language].remove }</th>
           </tr>
         </thead>
         <tbody>

@@ -1,9 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import Context from '../context/Context';
+import { ContextInterface } from '../interfaces/ContextInterface';
 import { Meteor } from "meteor/meteor";
 import ArrayInputs from './ArrayInputs';
+import clientPageTranslation from '../utils/clientTranslation';
 
 
 function ClientsAddForm() {
+  const { language } = useContext(Context) as ContextInterface;
   const [name, setName] = useState('');
   const [cpf, setCpf] = useState('');
   const [email, setEmail] = useState('');
@@ -40,14 +44,14 @@ function ClientsAddForm() {
   return (
     <div className="flex flex-col items-center justify-center">
       <form onSubmit={handleSubmit} className="flex flex-row items-center justify-center">
-        <label htmlFor="name">Name</label>
+        <label htmlFor="name">{ clientPageTranslation[language].name }</label>
         <input
           type="text"
           name="name"
           value={ name }
           onChange={(e) => setName(e.target.value)}
         />
-        <label htmlFor="CPF">CPF</label>
+        <label htmlFor="CPF">{ clientPageTranslation[language].cpf }</label>
         <input
           type="text"
           name="CPF"
@@ -55,21 +59,21 @@ function ClientsAddForm() {
           onChange={(e) => setCpf(e.target.value)}
         />
         <ArrayInputs
-          name={"Email"}
+          name={"email"}
           value={ email }
           setArray={ setEmailArray }
           setString={ setEmail }
           array={ emailArray }
         />
         <ArrayInputs
-          name={"Phone"}
+          name={"phone"}
           value={ phone }
           setArray={ setPhoneArray }
           setString={ setPhone }
           array={ phoneArray }
         />
         <ArrayInputs
-          name={"Address"}
+          name={"address"}
           value={ address }
           setArray={ setAddressArray }
           setString={ setAddress }
@@ -79,7 +83,7 @@ function ClientsAddForm() {
           type="button"
           onClick={handleSubmit}          
         >
-          Submit
+          { clientPageTranslation[language].addClient }
         </button>
         {error && <p>{error}</p>}
       </form>

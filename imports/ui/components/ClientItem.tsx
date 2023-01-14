@@ -1,7 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import Context from '../context/Context';
+import { ContextInterface } from '../interfaces/ContextInterface';
 import { Meteor } from "meteor/meteor";
 import ClientsInterface from '../interfaces/ClientsInterface';
 import EditClientItem from './EditClientItem';
+import clientPageTranslation from '../utils/clientTranslation';
 
 interface props {
   client: ClientsInterface
@@ -9,7 +12,8 @@ interface props {
 }
 
 function ClientItem(props: props) {
-  const [edit, setEdit] = useState(false);
+  const { language } = useContext(Context) as ContextInterface;
+  const [edit, setEdit] = useState(false); // estado de edicao proprio da linha com o cliente
 
   const removeItem = (id: string | undefined) => {
     Meteor.call('clients.delete', { id }, (error: any) => {
@@ -21,7 +25,7 @@ function ClientItem(props: props) {
 
   return (
     edit ? ( 
-    <EditClientItem
+    <EditClientItem 
       client={ props.client }
       index={ props.index }
       setEdit={ setEdit }
@@ -49,13 +53,13 @@ function ClientItem(props: props) {
         <button
           className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'
           onClick={ () => setEdit(true) }
-          >Edit</button>
+          >{ clientPageTranslation[language].edit }</button>
       </td>
       <td className='p-10'>
         <button
           className='bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded'
           onClick = { () => { removeItem(props.client._id) } }
-          >Remove</button>
+          >{ clientPageTranslation[language].remove }</button>
       </td>
     </tr>
   ));
