@@ -35,12 +35,14 @@ function HTTPCatPage() {
   }, []);
 
   return (
-    <div className="flex flex-col items-center justify-center">
+    <div className="flex flex-col h-screen">
       <NavigationButtons />
-      <h1 className="text-3xl font-bold">{ navigationTranslate[language].HTTPCat }</h1>
-      <div className="flex flex-col items-center justify-center">
-        <CatSelect onSelect={(id) => setStatusCode(parseInt(id))} />
-        <img src={`https://http.cat/${statusCode}`} alt="HTTP Cat" />
+      <div className="grid place-items-center h-screen">
+        <h1 className="text-3xl font-bold">{ navigationTranslate[language].HTTPCat }</h1>
+        <div className="flex flex-col items-center justify-center">
+          <CatSelect onSelect={(id) => setStatusCode(parseInt(id))} />
+          <img src={`https://http.cat/${statusCode}`} alt="HTTP Cat" />
+        </div>
       </div>
     </div>
   );

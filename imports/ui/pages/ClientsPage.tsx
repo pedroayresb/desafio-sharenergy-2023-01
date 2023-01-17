@@ -38,10 +38,12 @@ function ClientsPage() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center">
+    <div className="flex flex-col h-screen">
       <NavigationButtons />
-      <ClientsAddForm />
-      <AddedClientsContainer clients={ clients } />
+      <div className="grid place-items-center h-screen">
+        <ClientsAddForm />
+        <AddedClientsContainer clients={ clients } />
+      </div>
      </div>
   );
 };

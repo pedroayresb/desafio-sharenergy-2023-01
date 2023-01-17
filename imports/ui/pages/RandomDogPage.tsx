@@ -12,11 +12,15 @@ import homepageTranslation from '../utils/homepageTranslation';
 function RandomDog() {
   const [dog, setDog] = useState('');
   const [cookies] = useCookies(['token']);
+  const [isVideo, setIsVideo] = useState(false);
   const { user, setUser, language } = useContext(Context) as ContextInterface;
   const navigate = useNavigate();
 
   const getNewDog = async () => { // seleciona um dog aleatório
     const dog = await randomDog();
+    if (dog.includes('mp4')) {
+      setIsVideo(true);
+    }
     setDog(dog);
   };
 
@@ -37,15 +41,17 @@ function RandomDog() {
   }, []);
 
   return (
-    <div className="flex flex-col items-center justify-center">
+    <div className="flex flex-col h-screen">
       <NavigationButtons />
-      <h1 className="text-3xl font-bold">{ navigationTranslate[language].RandomDog }</h1>
-      <div className="flex flex-col items-center justify-center">
-        <button
-          onClick={() => getNewDog()}
-          className="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2 px-4 rounded"
-        >{ homepageTranslation[language].getNewDog }</button>
-        <img src={dog} alt="Random Dog" />
+      <div className="grid place-items-center h-screen">
+        <h1 className="text-3xl font-bold">{ navigationTranslate[language].RandomDog }</h1>
+        <div className="flex flex-col items-center justify-center">
+          <button
+            onClick={() => getNewDog()}
+            className="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2 px-4 rounded"
+          >{ homepageTranslation[language].getNewDog }</button>
+          { isVideo ? <video src={dog} controls /> : <img src={dog} alt="Random Dog" /> }
+        </div>
       </div>
     </div>
   );

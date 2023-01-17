@@ -5,11 +5,12 @@ import getRandomUsers from '../utils/randomUsers';
 import homepageTranslation from '../utils/homepageTranslation'; // arquivo com as traduções
 
 function RandomUsersContainer() {
-  const { setRandomUsers, setRandomFilteredUsers, language } = useContext(Context) as ContextInterface;
+  const { setRandomUsers, setRandomFilteredUsers, setPage, language } = useContext(Context) as ContextInterface;
   const [quantity, setQuantity] = useState(10);
 
   const getUsers = async (quantity: number) => {
     const randomUsers = await getRandomUsers(quantity);
+    setPage(1);
     setRandomUsers(randomUsers);
     setRandomFilteredUsers(randomUsers);
   };

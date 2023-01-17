@@ -14,10 +14,10 @@ function RandomUsersContainer() {
 
   useEffect(() => {
     if (!(page - 1 === 0)) {
-      const randomUsersInPage: Results[] = randomFilteredUsers?.slice(((page * 10) - 1), (((page + 1) * 10)) - 1) as Results[]; // pega os usuarios da proxima pagina e seta no contexto
+      const randomUsersInPage: Results[] = randomFilteredUsers?.slice( (page - 1) * 10 , page * 10 ) as Results[]; // pega os usuarios da proxima pagina e seta no contexto
       setRandomUsersInPage(randomUsersInPage);
     } else {
-      const randomUsersInPage: Results[] = randomFilteredUsers?.slice(0, ((page * 10) - 1)) as Results[]; // pega os usuarios da primeira pagina e seta no contexto
+      const randomUsersInPage: Results[] = randomFilteredUsers?.slice(0, (page * 10)) as Results[]; // pega os usuarios da primeira pagina e seta no contexto
       setRandomUsersInPage(randomUsersInPage);
     }
   }, [randomFilteredUsers, page]);
