@@ -20,17 +20,33 @@ function CatSelect(props: props) {
     setFilteredCodes(filtered);
   }, [selectedCat]);
 
+  const handleClick = (code: string) => {
+    props.onSelect(code);
+    setSelectedCat('');
+  };
+
   return (
     <div>
       <input
         type="text"
         placeholder={ homepageTranslation[language].searchByCode }
         onChange={(e) => setSelectedCat(e.target.value)}
+        className='border border-dark-cyan h-12 p-3 rounded-tl-xl rounded-bl-xl  hover:border-light-purple w-32 text-center'
       />
-      {showCodes && filteredCodes.map((code) => (
-        <option key={code} value={code} onClick={() => props.onSelect(code)}>{code}</option>
-      ))}
-      <button onClick={() => props.onSelect(selectedCat)}>{ homepageTranslation[language].getCats }</button>
+      <div
+        className={showCodes ? "border border-dark-cyan rounded-b-xl w-32 overflow-y-auto absolute bg-white" : "hidden"}
+      >
+        {showCodes && filteredCodes.map((code) => (
+          <option 
+            key={code}
+            value={code}
+            onClick={ () => handleClick(code) }
+          >{code}</option>
+        ))}
+      </div>
+      <button 
+        onClick={() => handleClick(selectedCat)}
+        className="border border-dark-cyan rounded-tr-xl rounded-br-xl h-12 p-2 bg-dark-cyan text-white text-center text-sm hover:bg-white hover:text-dark-cyan self-end">{ homepageTranslation[language].getCats }</button>
     </div>
   );
 };

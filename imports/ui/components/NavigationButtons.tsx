@@ -23,7 +23,7 @@ function NavigationButtons() {
   };
 
   return (
-    <nav className='p-10 flex flex-row justify-between'>
+    <nav className='p-10 flex flex-row justify-evenly'>
       <div className='place-self-start'>
         <NavigationButtonsConfigs to='' item='users' language={language} />
         <NavigationButtonsConfigs to='HTTPCat' item='HTTPCat' language={language} />
@@ -32,7 +32,7 @@ function NavigationButtons() {
       </div>
       <div className='flex flex-col place-self-end'>
         <p className='self-end'>{ user?.name }</p>
-        <button onClick={logout} className='self-end'>{ navigationTranslate[language].Logout }</button>
+        <button onClick={logout} className='self-end hover:text-cyan'>{ navigationTranslate[language].Logout }</button>
       </div>
     </nav>
   )

@@ -54,7 +54,8 @@ function EditClientItem(props: props) { // componente que renderiza os itens da 
   return (
     <>
       <button
-      onClick={() => setOpen(true)}
+        onClick={() => setOpen(true)}
+        className='bg-cyan hover:bg-dark-cyan text-white font-bold py-2 px-4 rounded'
       >
       { clientPageTranslation[language].editClient }
       </button>

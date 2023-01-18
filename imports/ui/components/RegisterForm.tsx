@@ -5,6 +5,7 @@ import { useCookies } from "react-cookie";
 import Context from "../context/Context";
 import { ContextInterface } from "../interfaces/ContextInterface";
 import { formsTranslation } from "../utils/formsTranslation"; // arquivo com as traduções
+import homepageTranslation from "../utils/homepageTranslation"; // arquivo com as traduções
 
 function RegisterForm() {
   const navigate = useNavigate();
@@ -46,13 +47,13 @@ function RegisterForm() {
   };
 
   return (
-    <form onSubmit={ handleSubmit } className="grid place-items-center content-center  bg-white">
+    <form onSubmit={ handleSubmit } className="grid place-items-center content-center bg-dark-offwhite text-dark-blue">
       <div className="mt-4 grid place-items-center content-center">
         <label htmlFor="name" className="justify-self-start">{ formsTranslation[language].username }: </label>
         <input
           type="text"
           name="name"
-          className="border rounded-xl h-12 py-5 px-4 caret-dark-purple"
+          className="border rounded-xl h-12 py-5 px-4 caret-dark-purple text-dark-blue"
           value={ name }
           onChange={ handleNameChange }
         />
@@ -62,7 +63,7 @@ function RegisterForm() {
         <input
           type="password"
           name="password"
-          className="border rounded-xl h-12 py-5 px-4 caret-dark-purple"
+          className="border rounded-xl h-12 py-5 px-4 caret-dark-purple text-dark-blue"
           value={ password }
           onChange={ handlePasswordChange }
         />
@@ -77,8 +78,10 @@ function RegisterForm() {
           />
       </div>
       <button 
-        type="submit"
-        className="border w-56 mt-12 rounded-full py-5 bg-dark-purple border-light-purple text-white font-medium text-center hover:bg-white hover:text-dark-purple">{ formsTranslation[language].login }
+        type="button"
+        className="border w-56 mt-12 rounded-full py-5 bg-dark-cyan border-light-cyan text-white font-medium text-center hover:bg-white hover:text-dark-cyan"
+      >
+          { homepageTranslation[language].register }
       </button>
       { error && <p className="mt-5 text-red">{ error }</p> }
     </form>

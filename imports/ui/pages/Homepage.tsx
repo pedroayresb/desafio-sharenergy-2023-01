@@ -39,16 +39,13 @@ function Homepage() {
   }, []);
 
   return (
-    <div className="flex flex-col h-screen">
+    <div className="flex flex-col h-screen text-dark-blue bg-offwhite">
       <NavigationButtons />
-      <div className="flex flex-col place-items-center p-2">
-        <NewRandomUsersButton />
-        <div className="flex flex-row space-evenly">
-          <RandomUserFilters />
-          <div className="flex flex-col">
-            <RandomUsersContainer />
-            { randomFilteredUsers?.length as Number > 10 && <PageButton /> } {/* se a quantidade de usuários filtrados for maior que 10, mostra o botão de paginação */}
-          </div>
+      <div className="flex flex-col place-items-center">
+        <RandomUserFilters />
+        <div className="flex flex-col">
+          <RandomUsersContainer />
+          { randomFilteredUsers?.length as Number > 10 && <PageButton /> } {/* se a quantidade de usuários filtrados for maior que 10, mostra o botão de paginação */}
         </div>
       </div>
     </div>

@@ -20,7 +20,7 @@ function LanguageButton() {
   };
 
   return (
-    <div className="absolute right-3 bottom-0">
+    <div className="absolute right-3 bottom-0 text-dark-blue">
       <button
         onClick={() => changeLanguage(language)}
       >{flagTranslation[language].flag}</button>

@@ -7,14 +7,13 @@ import NavigationButtons from '../components/NavigationButtons';
 import statusCodes from '../utils/httpCat';
 import CatSelect from '../components/CatSelect';
 import { useCookies } from 'react-cookie';
-import { navigationTranslate } from '../utils/navigationTranslation';
 
 const random = (array: any[]) => {
   return array[Math.floor(Math.random() * array.length)];
 };
 
 function HTTPCatPage() {
-  const { user, setUser, language } = useContext(Context) as ContextInterface;
+  const { user, setUser } = useContext(Context) as ContextInterface;
   const [cookies] = useCookies(['token']);
   const [statusCode, setStatusCode] = useState(random(statusCodes));
   const navigate = useNavigate();
@@ -33,14 +32,13 @@ function HTTPCatPage() {
   }, []);
 
   return (
-    <div className="flex flex-col h-screen">
+    <div className="flex flex-col h-screen text-dark-blue bg-offwhite">
       <NavigationButtons />
-      <div className="grid place-items-center h-screen">
-        <h1 className="text-3xl font-bold">{ navigationTranslate[language].HTTPCat }</h1>
-        <div className="flex flex-col items-center justify-center">
+      <div className="flex flex-col items-center justify-start h-screen">
           <CatSelect onSelect={(id) => setStatusCode(parseInt(id))} />
-          <img src={`https://http.cat/${statusCode}`} alt="HTTP Cat" />
-        </div>
+          <div className="flex flex-row items-center justify-center w-96 h-96 mt-6">
+            <img className='max-w-full max-h-full' src={`https://http.cat/${statusCode}`} alt="HTTP Cat" />
+          </div>
       </div>
     </div>
   );

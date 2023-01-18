@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import Context from '../context/Context';
 import { ContextInterface, Results } from '../interfaces/ContextInterface';
+import NewRandomUsersButton from './NewRandomUsersButton';
 import homepageTranslation from '../utils/homepageTranslation'; // arquivo com as traduções
 
 function RandomUsersContainer() {
@@ -22,19 +23,20 @@ function RandomUsersContainer() {
 
 
   return (
-    <form className='flex flex-col items-center self-center p-4'>
-      <div className="mt-4 grid place-items-center content-center">
+    <form className='flex flex-row justify-center self-center items-center p-4 bg-dark-blue mt-4 text-white w-full'>
+      <div className="m-4 grid place-items-center content-center">
         <label htmlFor="name">{ homepageTranslation[language].searchName }: </label>
-        <input type="text" placeholder={ homepageTranslation[language].searchName } onChange={(e) => setName(e.target.value)} className="border rounded-xl h-12 py-5 px-4 caret-dark-purple" />
+        <input type="text" placeholder={ homepageTranslation[language].searchName } onChange={(e) => setName(e.target.value)} className="border border-yellow rounded-xl h-8 py-5 px-4 caret-dark-purple" />
       </div>
-      <div className="mt-4 grid place-items-center content-center">
+      <div className="m-4 grid place-items-center content-center">
         <label htmlFor="email">{ homepageTranslation[language].searchEmail }: </label>
-        <input type="text" placeholder={ homepageTranslation[language].searchEmail } onChange={(e) => setEmail(e.target.value)} className="border rounded-xl h-12 py-5 px-4 caret-dark-purple" />
+        <input type="text" placeholder={ homepageTranslation[language].searchEmail } onChange={(e) => setEmail(e.target.value)} className="border border-yellow rounded-xl h-8 py-5 px-4 caret-dark-purple" />
       </div>
-      <div className="mt-4 grid place-items-center content-center">
+      <div className="m-4 grid place-items-center content-center">
         <label htmlFor="username">{ homepageTranslation[language].searchUsername }: </label>
-        <input type="text" placeholder={ homepageTranslation[language].searchUsername } onChange={(e) => setUsername(e.target.value)} className="border rounded-xl h-12 py-5 px-4 caret-dark-purple" />
+        <input type="text" placeholder={ homepageTranslation[language].searchUsername } onChange={(e) => setUsername(e.target.value)} className="border border-yellow rounded-xl h-8 py-5 px-4 caret-dark-purple" />
       </div>
+      <NewRandomUsersButton />
     </form>
   );
 }

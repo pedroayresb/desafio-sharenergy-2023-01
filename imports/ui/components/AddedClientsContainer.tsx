@@ -12,9 +12,9 @@ interface props {
 function AddedClientsContainer(props: props) {
   const { language } = useContext(Context) as ContextInterface;
   return (
-    <div>
+    <div className='overflow-scroll h-96'>
       <table>
-        <thead>
+        <thead className='bg-dark-blue mt-4 text-white w-full sticky top-0'>
           <tr>
             <th className='p-10'>{ clientPageTranslation[language].name }</th>
             <th className='p-10'>{ clientPageTranslation[language].cpf }</th>

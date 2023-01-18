@@ -46,28 +46,28 @@ function LoginForm() {
   };
 
   return (
-    <form onSubmit={ handleSubmit } className="grid place-items-center content-center  bg-white">
-      <div className="mt-4 grid place-items-center content-center">
+    <form onSubmit={ handleSubmit } className="grid place-items-center content-center  bg-dark-offwhite">
+      <div className="mt-4 grid place-items-center content-center text-dark-blue">
         <label htmlFor="name" className="justify-self-start">{ formsTranslation[language].username }: </label>
         <input
           type="text"
           name="name"
-          className="border rounded-xl h-12 py-5 px-4 caret-dark-purple"
+          className="border rounded-xl h-12 py-5 px-4 caret-dark-purple text-dark-blue"
           value={ name }
           onChange={ handleNameChange }
         />
       </div>
-      <div className="mt-4 grid place-items-center content-center">
+      <div className="mt-4 grid place-items-center content-center text-dark-blue">
         <label htmlFor="password" className="justify-self-start">{ formsTranslation[language].password }: </label>
         <input
           type="password"
           name="password"
-          className="border rounded-xl h-12 py-5 px-4 caret-dark-purple"
+          className="border rounded-xl h-12 py-5 px-4 caret-dark-purple text-dark-blue"
           value={ password }
           onChange={ handlePasswordChange }
         />
       </div>
-      <div>
+      <div className="text-dark-blue" >
         <label htmlFor="remember" className="justify-self-start">{ formsTranslation[language].rememberMe }: </label>
         <input
           type="checkbox"
@@ -78,7 +78,7 @@ function LoginForm() {
       </div>
       <button 
         type="submit"
-        className="border w-56 mt-12 rounded-full py-5 bg-dark-purple border-light-purple text-white font-medium text-center hover:bg-white hover:text-dark-purple">{ formsTranslation[language].login }
+        className="border w-56 mt-12 rounded-full py-5 bg-dark-cyan border-light-cyan text-white font-medium text-center hover:bg-white hover:text-dark-cyan">{ formsTranslation[language].login }
       </button>
       { error && <p className="mt-5 text-red">{ error }</p> }
     </form>

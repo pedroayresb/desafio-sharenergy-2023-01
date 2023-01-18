@@ -78,13 +78,10 @@ Meteor.methods({
     if (!token) {
       throw new Meteor.Error("Not logged");
     }
-    try {
-      const decoded = jwt.verify(token, secret) as decoded;
-      const user = UserCollection.findOne({ _id: decoded.id });
-      return user;
-    } catch (err) {
-      throw new Meteor.Error("Invalid token");
-    }
+    const decoded = jwt.verify(token, secret);
+    const { id } = decoded as decoded;
+    const user = UserCollection.findOne({ _id: id });
+    return user;
   },
   "users.update"({name, password}) {
     check(name, String);

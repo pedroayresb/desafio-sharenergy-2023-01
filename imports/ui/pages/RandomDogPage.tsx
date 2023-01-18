@@ -6,7 +6,6 @@ import { ContextInterface } from '../interfaces/ContextInterface';
 import NavigationButtons from '../components/NavigationButtons';
 import randomDog from '../utils/randomDog';
 import { useCookies } from 'react-cookie';
-import { navigationTranslate } from '../utils/navigationTranslation';
 import homepageTranslation from '../utils/homepageTranslation';
 
 function RandomDog() {
@@ -20,6 +19,8 @@ function RandomDog() {
     const dog = await randomDog();
     if (dog.includes('mp4')) {
       setIsVideo(true);
+    } else {
+      setIsVideo(false);
     }
     setDog(dog);
   };
@@ -39,16 +40,15 @@ function RandomDog() {
   }, []);
 
   return (
-    <div className="flex flex-col h-screen">
+    <div className="flex flex-col h-screen text-dark-blue bg-offwhite">
       <NavigationButtons />
-      <div className="grid place-items-center h-screen">
-        <h1 className="text-3xl font-bold">{ navigationTranslate[language].RandomDog }</h1>
-        <div className="flex flex-col items-center justify-center">
-          <button
-            onClick={() => getNewDog()}
-            className="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2 px-4 rounded"
-          >{ homepageTranslation[language].getNewDog }</button>
-          { isVideo ? <video src={dog} controls /> : <img src={dog} alt="Random Dog" /> }
+      <div className="flex flex-col items-center justify-start h-screen">
+        <button
+          onClick={() => getNewDog()}
+          className="border border-dark-cyan rounded-xl h-12 p-2 bg-dark-cyan text-white text-center text-sm hover:bg-white hover:text-dark-cyan"
+        >{ homepageTranslation[language].getNewDog }</button>
+        <div className="flex flex-row items-center justify-center w-96 h-96 mt-6">
+          { isVideo ? <video src={dog} className='max-w-full max-h-full' controls /> : <img src={dog} className='max-w-full max-h-full' alt="Random Dog" /> }
         </div>
       </div>
     </div>

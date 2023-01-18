@@ -1,10 +1,7 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import EditClientItem from './EditClientItem';
-import Context from '../context/Context';
-import { ContextInterface } from '../interfaces/ContextInterface';
 import { Meteor } from "meteor/meteor";
 import ClientsInterface from '../interfaces/ClientsInterface';
-import clientPageTranslation from '../utils/clientTranslation';
 
 interface props {
   client: ClientsInterface
@@ -12,7 +9,6 @@ interface props {
 }
 
 function ClientItem(props: props) {
-  const { language } = useContext(Context) as ContextInterface;
 
   const removeItem = (id: string | undefined) => {
     Meteor.call('clients.delete', { id }, (error: any) => {
@@ -23,7 +19,7 @@ function ClientItem(props: props) {
   };
 
   return (
-    <tr key={ props.index }>
+    <tr key={ props.index } className='bg-dark-offwhite h-52'>
       <td className='p-10'>{ props.client.name }</td>
       <td className='p-10'>{ props.client.cpf }</td>
       <td className='p-10'>
@@ -47,11 +43,11 @@ function ClientItem(props: props) {
           index= { props.index }
         />
       </td>
-      <td className='p-10'>
+      <td className='p-11 grid items-center justify-center align-center h-52'>
         <button
-          className='text-center text-red-500 border border-red-500 rounded-xl hover:bg-red-500 px-2 h-8 hover:text-white focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity'
+          className='bg-red hover:bg-dark-red text-white font-bold py-2 px-4 rounded'
           onClick = { () => { removeItem(props.client._id) } }
-          >{ clientPageTranslation[language].remove }</button>
+          >X</button>
       </td>
     </tr>
   );

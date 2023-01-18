@@ -36,7 +36,7 @@ function ClientsPage() {
   };
 
   return (
-    <div className="flex flex-col h-screen">
+    <div className="flex flex-col h-screen text-dark-blue bg-offwhite">
       <NavigationButtons />
       <div className="grid place-items-center h-screen">
         <AddedClientsContainer clients={ clients } />

@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import Context from '../context/Context';
 import RandomUser from './RandomUser';
 import { ContextInterface, Results } from '../interfaces/ContextInterface';
+import '../styles/RandomUsersContainer.css'
 
 function RandomUsersContainer() {
   const { randomFilteredUsers, randomUsers, page } = useContext(Context) as ContextInterface;
@@ -23,7 +24,7 @@ function RandomUsersContainer() {
   }, [randomFilteredUsers, page]);
 
   return (
-    <div className="flex flex-col overflow-scroll h-80 p-20 pt-3 items-center">
+    <div className="flex flex-col overflow-scroll h-89 p-20 pt-3 items-center scroll-my-px mt-5 bg-dark-offwhite rounded-xl container" >
       {randomUsersInPage?.map((user) => (
         <RandomUser key={user.login.uuid} {...user} />
       ))}

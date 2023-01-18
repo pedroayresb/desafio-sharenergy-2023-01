@@ -12,10 +12,10 @@ function NavigationButtonsConfigs(props: NavigationButtonsConfigsProps) {
   const { to, language, item } = props;
   const isSelected = window.location.pathname === `/${to}`;
   if (isSelected) 
-    return <Link to={ `/${to}` } className="border border-dark-purple rounded-full bg-light-purple p-2 font-bold">{navigationTranslate[language][item]}</Link>
+    return <Link to={ `/${to}` } className="text-cyan p-4">{navigationTranslate[language][item]}</Link>
 
   return (
-    <Link to={ `/${to}` } className="border border-dark-purple rounded-full bg-dark-purple p-2 hover:border-light-purple">{navigationTranslate[language][item]}</Link>
+    <Link to={ `/${to}` } className="text-dark-blue hover:text-cyan p-4 font-sans">{navigationTranslate[language][item]}</Link>
   );
 }
 

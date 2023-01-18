@@ -58,6 +58,7 @@ function ClientsAddForm() {
     <>
       <button
         onClick={() => setOpen(true)}
+        className='border border-yellow rounded-xl px-12 py-4 text-3xl bg-yellow text-dark-blue text-center hover:bg-white hover:text-dark-cyan hover:border-dark-cyan'
       >
       { clientPageTranslation[language].addClient }
       </button>
@@ -67,6 +68,7 @@ function ClientsAddForm() {
       >
         <button
           onClick={() => setOpen(false)}
+          className='absolute top-0 right-0'
         >
           X
         </button>
