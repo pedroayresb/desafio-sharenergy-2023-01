@@ -9,7 +9,7 @@ function RandomUsers(props: Results) {
   const { name, picture, cell, email, location, login,  dob } = props;
 
   return (
-    <div className="border flex flex-row m-4 p-10">
+    <div className="border flex flex-row w-90">
       <img src={picture.large} alt={name.first} className='rounded-full'/>
       <div className="card-body">
         <p>{ homepageTranslation[language].name }: { `${name.title}. ${name.first} ${name.last}` }</p>

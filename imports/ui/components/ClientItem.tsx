@@ -49,7 +49,7 @@ function ClientItem(props: props) {
       </td>
       <td className='p-10'>
         <button
-          className='bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded'
+          className='text-center text-red-500 border border-red-500 rounded-xl hover:bg-red-500 px-2 h-8 hover:text-white focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity'
           onClick = { () => { removeItem(props.client._id) } }
           >{ clientPageTranslation[language].remove }</button>
       </td>

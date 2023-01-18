@@ -12,25 +12,21 @@ import PageButton from '../components/PageButton';
 
 
 function Homepage() {
-  const { language, user, setUser, randomFilteredUsers, nameForLogin, setNameForLogin, passwordForLogin, setPasswordForLogin } = useContext(Context) as ContextInterface;
+  const { setUser, randomFilteredUsers, nameForLogin, setNameForLogin, passwordForLogin, setPasswordForLogin } = useContext(Context) as ContextInterface;
   const [cookies] = useCookies(['token']);
   const navigate = useNavigate();
 
   useEffect(() => {
     if (cookies.token) { // se a pessoa escolheu "lembrar de mim" no login
       Meteor.call('users.loginWithToken', { token: cookies.token }, (error: any, result: any) => {
-        if (error) {
-          console.log(error);
-        } else {
+        if (!error) {
           delete result.password; // não envia a senha para o contexto
           setUser(result);
         }
       });
     } else if (nameForLogin && passwordForLogin) { // se a pessoa não escolheu "lembrar de mim" no login
       Meteor.call('users.loginWithoutToken', { name: nameForLogin, password: passwordForLogin }, (error: any, result: any) => {
-        if (error) {
-          console.log(error);
-        } else {
+        if (!error) {
           delete result.password; // não envia a senha para o contexto
           setUser(result);
           setNameForLogin(null); // limpa o contexto usado para fazer o login
@@ -45,7 +41,7 @@ function Homepage() {
   return (
     <div className="flex flex-col h-screen">
       <NavigationButtons />
-      <div className="grid place-items-center h-screen">
+      <div className="flex flex-col place-items-center p-2">
         <NewRandomUsersButton />
         <div className="flex flex-row space-evenly">
           <RandomUserFilters />

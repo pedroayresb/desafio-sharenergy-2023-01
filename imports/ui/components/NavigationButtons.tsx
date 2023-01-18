@@ -23,13 +23,17 @@ function NavigationButtons() {
   };
 
   return (
-    <nav className='p-10 flex flex-row'>
-      <NavigationButtonsConfigs to='' item='users' language={language} />
-      <NavigationButtonsConfigs to='HTTPCat' item='HTTPCat' language={language} />
-      <NavigationButtonsConfigs to='RandomDog' item='RandomDog' language={language} />
-      <NavigationButtonsConfigs to='Clients' item='Clients'language={language} />
-      <p>{ user?.name }</p>
-      <button onClick={logout}>{ navigationTranslate[language].Logout }</button>
+    <nav className='p-10 flex flex-row justify-between'>
+      <div className='place-self-start'>
+        <NavigationButtonsConfigs to='' item='users' language={language} />
+        <NavigationButtonsConfigs to='HTTPCat' item='HTTPCat' language={language} />
+        <NavigationButtonsConfigs to='RandomDog' item='RandomDog' language={language} />
+        <NavigationButtonsConfigs to='Clients' item='Clients'language={language} />
+      </div>
+      <div className='flex flex-col place-self-end'>
+        <p className='self-end'>{ user?.name }</p>
+        <button onClick={logout} className='self-end'>{ navigationTranslate[language].Logout }</button>
+      </div>
     </nav>
   )
 }

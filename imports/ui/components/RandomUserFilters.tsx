@@ -22,7 +22,7 @@ function RandomUsersContainer() {
 
 
   return (
-    <form className='flex flex-col items-center self-center'>
+    <form className='flex flex-col items-center self-center p-4'>
       <div className="mt-4 grid place-items-center content-center">
         <label htmlFor="name">{ homepageTranslation[language].searchName }: </label>
         <input type="text" placeholder={ homepageTranslation[language].searchName } onChange={(e) => setName(e.target.value)} className="border rounded-xl h-12 py-5 px-4 caret-dark-purple" />

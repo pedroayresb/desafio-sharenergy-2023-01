@@ -30,6 +30,7 @@ function AddedClientsContainer(props: props) {
               <ClientItem
                 client={ client }
                 index={ index }
+                key={ index }
               />
           )}
         </tbody>

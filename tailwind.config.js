@@ -1,8 +1,8 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    "./src/**/*.{js,jsx,ts,tsx}", "./index.html",
-    './node_modules/flowbite/**/*.js'
+    "./imports/ui/**/*.{js,jsx,ts,tsx}",
+    "./client/*.html",
   ],
   theme: {
     extend: {
@@ -54,12 +54,7 @@ module.exports = {
         44: '11rem',
         48: '12rem',
         52: '13rem',
-        56: '14rem',
-        60: '15rem',
-        64: '16rem',
-        72: '18rem',
-        80: '20rem',
-        90: '90rem',
+        56: '14rem', 
         'sm': '.125rem',
         DEFAULT: '.25rem',
         'lg': '.5rem',

@@ -27,9 +27,7 @@ function RandomDog() {
   useEffect(() => { // useEffect pra caso a pessoa decidir ir direto pra rota, para checar se realmente está logado
     if (cookies) {
       Meteor.call('users.loginWithToken', { token: cookies.token }, (error: any, result: any) => {
-        if (error) {
-          console.log(error);
-        } else {
+        if (!error) {
           delete result.password; // não precisa do password no contexto
           setUser(result);
         }

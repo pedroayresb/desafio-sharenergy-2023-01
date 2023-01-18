@@ -76,6 +76,7 @@ function EditClientItem(props: props) { // componente que renderiza os itens da 
             className="border rounded-xl h-12 py-5 px-4 caret-dark-purple"
             onChange={ (e) => setName(e.target.value) }
           />
+          {nameError.length > 0 && <p className="text-red-500">{ nameError }</p>}
         </div>
         <div className="mt-4 grid place-items-center content-center">
           <label htmlFor="CPF">{ clientPageTranslation[language].cpf }: </label>
@@ -85,6 +86,7 @@ function EditClientItem(props: props) { // componente que renderiza os itens da 
             className="border rounded-xl h-12 py-5 px-4 caret-dark-purple"
             onChange={ (e) => setCpf(e.target.value) }
           />
+          {cpfError.length > 0 && <p className="text-red-500">{ cpfError }</p>}
         </div>
         <div className="mt-4 grid place-items-center content-center">
           <label htmlFor="Email">{ clientPageTranslation[language].email }: </label>

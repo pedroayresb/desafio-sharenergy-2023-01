@@ -25,10 +25,10 @@ function ArrayInputs(props: props) {
         onChange={(e) => props.setString(e.target.value)}
         className="border rounded-xl h-12 py-5 px-4 caret-dark-purple"
       />
-      <button
+      { props.array.length < 3 && <button
         type='button'
         onClick={() => {
-          console.log(props.name, props.value)
+          setError('');
           const validateInputsResult = validateInputs[props.name](props.value);
           if (validateInputsResult) {
             setError(validateInputsResult);
@@ -39,7 +39,7 @@ function ArrayInputs(props: props) {
         }}
       >
         { clientPageTranslation[language][`add${props.name}`] }
-      </button>
+      </button> }
       {error && <p>{error}</p>}
       {props.array.map((item, index) => (
         <div key={ index } className='flex flex-row justify-center'>

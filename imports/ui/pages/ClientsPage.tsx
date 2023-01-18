@@ -18,9 +18,7 @@ function ClientsPage() {
   useEffect(() => { // useEffect pra caso a pessoa decidir ir direto pra rota, para checar se realmente está logado
     if (cookies) {
       Meteor.call('users.loginWithToken', { token: cookies.token }, (error: any, result: any) => {
-        if (error) {
-          console.log(error);
-        } else {
+        if (!error) {
           delete result.password; // não precisa do password no contexto
           setUser(result);
         }
@@ -41,8 +39,8 @@ function ClientsPage() {
     <div className="flex flex-col h-screen">
       <NavigationButtons />
       <div className="grid place-items-center h-screen">
-        <ClientsAddForm />
         <AddedClientsContainer clients={ clients } />
+        <ClientsAddForm />
       </div>
      </div>
   );

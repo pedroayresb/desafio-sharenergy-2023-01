@@ -41,7 +41,9 @@ function ClientsAddForm() {
       } else {
         setOpen(false);
         setName('');
+        setNameError('');
         setCpf('');
+        setCpfError('');
         setEmail('');
         setEmailArray([]);
         setPhone('');
@@ -78,6 +80,7 @@ function ClientsAddForm() {
               className="border rounded-xl h-12 py-5 px-4 caret-dark-purple"
               onChange={(e) => setName(e.target.value)}
             />
+            { nameError && <p>{nameError}</p> }
           </div>
           <div className="mt-4 grid place-items-center content-center">
             <label htmlFor="CPF">{ clientPageTranslation[language].cpf }</label>
@@ -88,6 +91,7 @@ function ClientsAddForm() {
               className="border rounded-xl h-12 py-5 px-4 caret-dark-purple"
               onChange={(e) => setCpf(e.target.value)}
             />
+            { cpfError && <p>{cpfError}</p> }
           </div>
           <ArrayInputs
             name={"email"}
