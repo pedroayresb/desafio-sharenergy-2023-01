@@ -62,9 +62,11 @@ function EditClientItem(props: props) { // componente que renderiza os itens da 
       <ReactModal
         isOpen={open}
         appElement={document.getElementById('react-target') as HTMLElement}
+        className='bg-white rounded-2xl w-5/6 h-[88%] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2'
       >
         <button
           onClick={() => setOpen(false)}
+          className='absolute top-0 right-0 border rounded-full h-12 w-12 text-3xl text-dark-blue text-center hover:bg-white hover:text-dark-cyan hover:border-dark-cyan'
         >
           X
         </button>
@@ -74,7 +76,7 @@ function EditClientItem(props: props) { // componente que renderiza os itens da 
           <input
             type='text'
             value={ name }
-            className="border rounded-xl h-12 py-5 px-4 caret-dark-purple"
+            className="border border-yellow rounded-xl h-8 py-5 px-4 caret-dark-purple"
             onChange={ (e) => setName(e.target.value) }
           />
           {nameError.length > 0 && <p className="text-red-500">{ nameError }</p>}
@@ -84,7 +86,7 @@ function EditClientItem(props: props) { // componente que renderiza os itens da 
           <input
             type='text'
             value={ cpf }
-            className="border rounded-xl h-12 py-5 px-4 caret-dark-purple"
+            className="border border-yellow rounded-xl h-8 py-5 px-4 caret-dark-purple"
             onChange={ (e) => setCpf(e.target.value) }
           />
           {cpfError.length > 0 && <p className="text-red-500">{ cpfError }</p>}
@@ -116,6 +118,7 @@ function EditClientItem(props: props) { // componente que renderiza os itens da 
         <div className="mt-4 grid place-items-center content-center">
           <button
             onClick={ updateClient }
+            className='bg-cyan hover:bg-dark-cyan text-white font-bold py-2 px-4 rounded'
           >
             { clientPageTranslation[language].save }
           </button>
