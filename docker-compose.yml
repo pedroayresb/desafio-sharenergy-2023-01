@@ -19,5 +19,3 @@ services:
     image: mongo:latest
     command:
       - --storageEngine=wiredTiger
-    volumes:
-      - data:/data/db

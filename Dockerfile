@@ -9,8 +9,8 @@ RUN curl "https://install.meteor.com/" | sh
 COPY . /usr/src/app
 WORKDIR /usr/src/app
 
-RUN chmod -R 700 /usr/src/app/.meteor/local
+RUN npm install -g meteor
 RUN meteor npm install
 
 EXPOSE 3000
-CMD ["npm", "start"]
+CMD ["meteor"]

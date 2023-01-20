@@ -14,14 +14,8 @@ function HTTPCatPage() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const rememberMe = localStorage.getItem('remember');
-    const meteorTokenExpire = localStorage.getItem('Meteor.loginTokenExpires');
-    const isExpired = new Date(meteorTokenExpire as string) < new Date();
-    if (rememberMe === 'true') {
-      const userInLocal = JSON.parse(localStorage.getItem('user') as string) as { name: string, password: string };
-      const { name, password } = userInLocal;
-      Meteor.loginWithPassword(name, password);
-    } else if (rememberMe === null || isExpired) {
+    const logged = localStorage.getItem('logged');
+    if (!logged) {
       navigate('/login');
     }
   }, []);
