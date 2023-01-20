@@ -1,0 +1,57 @@
+{
+  "name": "my-app",
+  "private": true,
+  "scripts": {
+    "start": "meteor run",
+    "test": "meteor test --once --driver-package meteortesting:mocha",
+    "test-app": "TEST_WATCH=1 meteor test --full-app --driver-package meteortesting:mocha",
+    "visualize": "meteor --production --extra-packages bundle-visualizer"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.17.9",
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "@types/chai": "^4.3.4",
+    "@types/crypto-js": "^4.1.1",
+    "@types/jest": "^27.5.2",
+    "@types/jsonwebtoken": "^8.5.9",
+    "@types/node": "^16.18.11",
+    "@types/react-cookies": "^0.1.0",
+    "@types/react-dom": "^18.0.10",
+    "@types/simpl-schema": "^1.12.3",
+    "@types/sinon": "^10.0.13",
+    "crypto-js": "^4.1.1",
+    "flowbite": "^1.5.5",
+    "flowbite-react": "^0.3.7",
+    "jsonwebtoken": "^9.0.0",
+    "meteor-node-stubs": "^1.2.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-modal": "^3.16.1",
+    "react-router-dom": "^6.6.1",
+    "react-scripts": "5.0.1",
+    "simpl-schema": "^3.4.1",
+    "sinon": "^15.0.1",
+    "web-vitals": "^2.1.4"
+  },
+  "devDependencies": {
+    "@types/meteor": "^1.4.87",
+    "@types/mocha": "^8.2.3",
+    "@types/react": "^18.0.26",
+    "@types/react-modal": "^3.13.1",
+    "autoprefixer": "^9.8.8",
+    "chai": "^4.3.7",
+    "cypress": "^12.3.0",
+    "postcss": "^8.4.21",
+    "tailwindcss": "^3.2.4",
+    "typescript": "^4.9.4"
+  },
+  "meteor": {
+    "mainModule": {
+      "client": "client/main.tsx",
+      "server": "server/main.ts"
+    },
+    "testModule": "tests/main.ts"
+  }
+}
