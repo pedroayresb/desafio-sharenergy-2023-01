@@ -37,3 +37,15 @@ A Startup figura entre as top 10 EnergyTechs do ranking 100 Open Startups desde 
 - MongoDB e Minimongo
 - TypeScript
 - HTML e CSS
+
+## Aplicação
+
+Existem duas opcoes para rodar o app: Local ou pelo Docker.
+
+### Local
+
+ - Para rodar o projeto local, é necessario ter o Meteor instalado global na sua máquina. Para isso, execute o comando `npm install -g meteor`, e, quando finalizar, execute o comando `meteor npm install` dentro da pasta do repositorio do projeto. Assim que todas as dependencias forem instaladas, execute o comando `meteor` para abrir o projeto no `http://localhost:3000`
+
+## Docker
+
+- Para rodar no docker, somente execute o comando `docker compose up` na pasta do repositorio do projeto, e aguarde os containeres abrirem e o meteor finalizar sua inicializacao, abrindo no `localhost`.
