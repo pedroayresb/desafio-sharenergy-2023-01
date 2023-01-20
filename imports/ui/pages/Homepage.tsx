@@ -24,7 +24,7 @@ function Homepage() {
       <NavigationButtons />
       <div className="flex flex-col place-items-center">
         <RandomUserFilters />
-        <div className="flex flex-col w-screen">
+        <div className="flex flex-col w-full">
           <RandomUsersContainer />
           { randomFilteredUsers?.length as Number > 10 && <PageButton /> } {/* se a quantidade de usuários filtrados for maior que 10, mostra o botão de paginação */}
         </div>
