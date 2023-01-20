@@ -23,7 +23,7 @@ function ArrayInputs(props: props) {
         name={ props.name }
         value={ props.value }
         onChange={(e) => props.setString(e.target.value)}
-        className="border border-yellow rounded-xl text-5xl mt-4 lg:h-8 py-5 px-4 caret-dark-purple"
+        className="border border-yellow rounded-xl text-5xl mt-4 lg:h-8 py-5 px-4 "
       />
       { props.array.length < 3 && <button
         type='button'

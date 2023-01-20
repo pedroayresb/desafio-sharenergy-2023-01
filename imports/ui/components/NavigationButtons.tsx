@@ -21,8 +21,8 @@ function NavigationButtons() {
   }
 
   return (
-    <nav className='p-10 flex flex-row justify-between text-5xl lg:justify-evenly lg:text-sm'>
-      <div className='place-self-start flex flex-col lg:flex-row'>
+    <nav className='p-10 flex flex-row justify-between text-3xl lg:justify-evenly lg:text-sm'>
+      <div className='place-self-start flex flex-row'>
         <NavigationButtonsConfigs to='' item='users' language={language} />
         <NavigationButtonsConfigs to='HTTPCat' item='HTTPCat' language={language} />
         <NavigationButtonsConfigs to='RandomDog' item='RandomDog' language={language} />

@@ -16,19 +16,19 @@ function RandomUsersContainer() {
   };
 
   return (
-    <div className='flex flex-row m-4'>
-      <div className='flex flex-col items-center text-5xl'>
+    <div className='flex flex-row m-2'>
+      <div className='grid place-items-center content-center'>
         <label htmlFor="quantity">{ homepageTranslation[language].quantity }: </label>
-        <div className='m-4'>
+        <div className='flex flex-row items-center'>
           <input
             type="number" 
             value={ quantity } 
             onChange={(e) => setQuantity(Number(e.target.value))}
-            className='text-5xl py-5 px-4 w-72 rounded-tl-xl rounded-bl-xl text-dark-blue hover:border-light-cyan text-center'
+            className='border border-yellow rounded-tl-xl rounded-bl-xl lg:h-8 mt-4 py-5 px-4 w-32'
           />
           <button
             type="button"
-            className=" rounded-tr-xl p-6 rounded-br-xl text-5xl bg-yellow text-dark-blue text-center hover:bg-white hover:text-dark-cyan self-end"
+            className="lg:border lg:border-yellow text-dark-blue bg-yellow text-lg rounded-tr-xl rounded-br-xl lg:h-8 mt-4 p-5 lg:leading-[0.1] lg:text-sm"
             onClick={() => getUsers( quantity )}
           >
             { homepageTranslation[language].getUsers }

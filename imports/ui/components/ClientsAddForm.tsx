@@ -80,7 +80,7 @@ function ClientsAddForm() {
               type="text"
               name="name"
               value={ name }
-              className="border border-yellow text-5xl mt-4 lg:h-8 py-5 px-4 caret-dark-purple"
+              className="border border-yellow text-5xl mt-4 lg:h-8 py-5 px-4 "
               onChange={(e) => setName(e.target.value)}
             />
             { nameError && <p>{nameError}</p> }
@@ -91,7 +91,7 @@ function ClientsAddForm() {
               type="text"
               name="CPF"
               value={ cpf }
-              className="border border-yellow rounded-xl text-5xl mt-4 lg:h-8 py-5 px-4 caret-dark-purple"
+              className="border border-yellow rounded-xl text-5xl mt-4 lg:h-8 py-5 px-4 "
               onChange={(e) => setCpf(e.target.value)}
             />
             { cpfError && <p>{cpfError}</p> }

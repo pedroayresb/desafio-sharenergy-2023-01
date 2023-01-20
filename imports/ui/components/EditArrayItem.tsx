@@ -50,7 +50,7 @@ function EditArrayItem(props: props) { // componete que renderiza os itens de um
           <input 
             type='text'
             value={ item }
-            className="border border-yellow text-5xl mt-4 lg:h-8 py-5 px-4 caret-dark-purple"
+            className="border border-yellow text-5xl mt-4 lg:h-8 py-5 px-4 "
             onChange={ (e: React.ChangeEvent<HTMLInputElement>) => changeArrayItem(e, index) }
           />
           <button
@@ -61,7 +61,7 @@ function EditArrayItem(props: props) { // componete que renderiza os itens de um
       { props.arrayItem.length < 3 && <><input
         type='text'
         value={newItem}
-        className="border border-yellow text-5xl mt-4 lg:h-8 py-5 px-4 caret-dark-purple"
+        className="border border-yellow text-5xl mt-4 lg:h-8 py-5 px-4 "
         onChange={(e: React.ChangeEvent<HTMLInputElement>) => setNewItem(e.target.value)} /><button onClick={(e) => submit(e)}>{clientPageTranslation[language].add}</button></> }
       <p>{ error }</p>
     </div>

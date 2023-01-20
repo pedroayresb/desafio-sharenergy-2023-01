@@ -24,7 +24,7 @@ function RandomUsersContainer() {
   }, [randomFilteredUsers, page]);
 
   return (
-    <div className="flex flex-col overflow-scroll h-89 pt-3 items-center scroll-my-px bg-dark-offwhite rounded-xl users-container" >
+    <div className="flex flex-col overflow-scroll h-176 pt-3 items-center scroll-my-px bg-dark-offwhite rounded-xl users-container lg:w-4/5 lg:self-center" >
       {randomUsersInPage?.map((user) => (
         <RandomUser key={user.login.uuid} {...user} />
       ))}

@@ -76,7 +76,7 @@ function EditClientItem(props: props) { // componente que renderiza os itens da 
           <input
             type='text'
             value={ name }
-            className="border border-yellow text-5xl mt-4 lg:h-8 py-5 px-4 caret-dark-purple"
+            className="border border-yellow text-5xl mt-4 lg:h-8 py-5 px-4 "
             onChange={ (e) => setName(e.target.value) }
           />
           {nameError.length > 0 && <p className="text-red-500">{ nameError }</p>}
@@ -86,7 +86,7 @@ function EditClientItem(props: props) { // componente que renderiza os itens da 
           <input
             type='text'
             value={ cpf }
-            className="border border-yellow text-5xl mt-4 lg:h-8 py-5 px-4 caret-dark-purple"
+            className="border border-yellow text-5xl mt-4 lg:h-8 py-5 px-4 "
             onChange={ (e) => setCpf(e.target.value) }
           />
           {cpfError.length > 0 && <p className="text-red-500">{ cpfError }</p>}

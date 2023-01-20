@@ -44,7 +44,7 @@ function LoginForm() {
         <input
           type="text"
           name="name"
-          className="border rounded-xl h-12 py-5 px-4 caret-dark-purple text-dark-blue"
+          className="border rounded-xl h-12 py-5 px-4  text-dark-blue"
           value={ name }
           onChange={ handleNameChange }
         />
@@ -54,7 +54,7 @@ function LoginForm() {
         <input
           type="password"
           name="password"
-          className="border rounded-xl h-12 py-5 px-4 caret-dark-purple text-dark-blue"
+          className="border rounded-xl h-12 py-5 px-4  text-dark-blue"
           value={ password }
           onChange={ handlePasswordChange }
         />

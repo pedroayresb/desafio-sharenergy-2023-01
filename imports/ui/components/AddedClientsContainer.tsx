@@ -12,7 +12,7 @@ interface props {
 function AddedClientsContainer(props: props) {
   const { language } = useContext(Context) as ContextInterface;
   return (
-    <div className='overflow-x-scroll h-4/5 w-5/6 bg-dark-offwhite text-3xl self-center'>
+    <div className='overflow-x-scroll h-7/8 w-5/6 bg-dark-offwhite text-3xl self-center'>
       <table className='flex flex-row'>
         <thead className='bg-dark-blue h-full text-white sticky left-0'>
           <tr className='flex flex-col h-full'>
