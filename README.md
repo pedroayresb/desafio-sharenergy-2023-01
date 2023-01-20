@@ -2,7 +2,7 @@
 
 Repositório destinado ao desafio realizado por Pedro Olympio Ayres Begnini para a vaga de desenvolvimento Web da SHARENERGY 2023/01
 
-LINK PARA A ENTREGA NO YOUTUNE: https://youtu.be/tuGEKGmxEao
+LINK PARA A ENTREGA NO YOUTUNE: https://youtu.be/gUJRqkYtLlw
 
 ## Sobre a SHARENERGY
 
