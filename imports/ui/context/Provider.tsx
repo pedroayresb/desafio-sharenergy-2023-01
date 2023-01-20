@@ -11,14 +11,14 @@ const Provider: React.FC<Props> = ({ children }) => {
   const [language, setLanguage] = useState(window.navigator.language);
   const [randomUsers, setRandomUsers] = useState<Results[] | null>(null);
   const [randomFilteredUsers, setRandomFilteredUsers] = useState<Results[] | null>(null);
-  const [nameForLogin, setNameForLogin] = useState(null);
-  const [passwordForLogin, setPasswordForLogin] = useState(null);
+  const [loading, setLoading] = useState(true);
   const [page, setPage] = useState(1);  
 
   const fetchRandomUsers = async () => {
     const randomUsers = await getRandomUsers(50) as Results[];
     setRandomUsers(randomUsers);
     setRandomFilteredUsers(randomUsers);
+    setLoading(false);
   };
 
   useEffect(() => {
@@ -34,10 +34,8 @@ const Provider: React.FC<Props> = ({ children }) => {
     setRandomFilteredUsers,
     page,
     setPage,
-    nameForLogin,
-    setNameForLogin,
-    passwordForLogin,
-    setPasswordForLogin,
+    loading,
+    setLoading,
   } as ContextInterface;
 
 

@@ -69,6 +69,8 @@ interface ContextInterface {
   setRandomFilteredUsers: React.Dispatch<React.SetStateAction<Results[] | null>>;
   page: number;
   setPage: React.Dispatch<React.SetStateAction<number>>;
+  loading: boolean;
+  setLoading: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 export { ContextInterface, UserInterface, Results };

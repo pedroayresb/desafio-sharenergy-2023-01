@@ -5,14 +5,16 @@ import getRandomUsers from '../utils/randomUsers';
 import homepageTranslation from '../utils/homepageTranslation'; // arquivo com as traduções
 
 function RandomUsersContainer() {
-  const { setRandomUsers, setRandomFilteredUsers, setPage, language } = useContext(Context) as ContextInterface;
+  const { setRandomUsers, setRandomFilteredUsers, setPage, language, setLoading } = useContext(Context) as ContextInterface;
   const [quantity, setQuantity] = useState(10);
 
   const getUsers = async (quantity: number) => {
+    setLoading(true);
     const randomUsers = await getRandomUsers(quantity);
     setPage(1);
     setRandomUsers(randomUsers);
     setRandomFilteredUsers(randomUsers);
+    setLoading(false);
   };
 
   return (
@@ -24,7 +26,7 @@ function RandomUsersContainer() {
             type="number" 
             value={ quantity } 
             onChange={(e) => setQuantity(Number(e.target.value))}
-            className='border border-yellow rounded-tl-xl rounded-bl-xl lg:h-8 mt-4 py-5 px-4 w-32'
+            className='border border-yellow rounded-tl-xl rounded-bl-xl lg:h-8 mt-4 py-5 px-4 w-32 text-dark-blue'
           />
           <button
             type="button"

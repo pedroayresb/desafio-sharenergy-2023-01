@@ -2,10 +2,11 @@ import React, { useContext, useEffect, useState } from 'react';
 import Context from '../context/Context';
 import RandomUser from './RandomUser';
 import { ContextInterface, Results } from '../interfaces/ContextInterface';
+import LoadingComponent from './LoadingComponents';
 import '../styles/RandomUsersContainer.css'
 
 function RandomUsersContainer() {
-  const { randomFilteredUsers, randomUsers, page } = useContext(Context) as ContextInterface;
+  const { randomFilteredUsers, randomUsers, page, loading } = useContext(Context) as ContextInterface;
   const [randomUsersInPage, setRandomUsersInPage] = useState<Results[] | null>(null);
 
   useEffect(() => {
@@ -25,7 +26,7 @@ function RandomUsersContainer() {
 
   return (
     <div className="flex flex-col overflow-scroll h-176 pt-3 items-center scroll-my-px bg-dark-offwhite rounded-xl users-container lg:w-4/5 lg:self-center" >
-      {randomUsersInPage?.map((user) => (
+      { loading ? <LoadingComponent /> : randomUsersInPage?.map((user) => (
         <RandomUser key={user.login.uuid} {...user} />
       ))}
      </div>
