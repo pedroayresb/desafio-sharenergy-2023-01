@@ -30,7 +30,7 @@ A Startup figura entre as top 10 EnergyTechs do ranking 100 Open Startups desde 
 - Em uma terceira página, há uma imagem aleatória da api [Random Dog](https://random.dog/), no qual voce pode gerar novas imagens;
 - Em uma quarta página, há uma lista de clientes, através da qual o usuário é capaz de cadastrar novos clientes, visualizar informações de um cliente específico, atualizar um cliente e deletar clientes. O cadastro deve possuir nome, email, telefone, endereço e cpf.
 
-### Ferramentas e Stack a ser utilizado
+### Ferramentas e Stack utilizados
 
 - ReactJS para o frontend
 - NodeJS com Metor
