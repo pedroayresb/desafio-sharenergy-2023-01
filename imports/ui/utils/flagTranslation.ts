@@ -6,10 +6,10 @@ type Translation =  {
 
 const flagTranslation: Translation = {
   'en-US': {
-    flag: 'English | US | Change Language | 🇺🇸',
+    flag: '🇺🇸',
   },
   'pt-BR': {
-    flag: 'Português | BR | Alterar Idioma | 🇧🇷',
+    flag: '🇧🇷',
   },
 };
 

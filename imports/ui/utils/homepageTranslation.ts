@@ -39,7 +39,7 @@ const homepageTranslation: Translation = {
   'pt-BR': {
     login: 'Entrar',
     register: 'Registrar',
-    getUsers: 'Obter Novos Usuários!',
+    getUsers: 'Obter Usuários!',
     searchEmail: 'Pesquisar por email',
     searchName: 'Pesquisar por nome',
     searchUsername: 'Pesquisar por nome de usuário',

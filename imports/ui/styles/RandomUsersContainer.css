@@ -1,8 +1,8 @@
-.container::-webkit-scrollbar {
+.users-container::-webkit-scrollbar {
   display: none;
 }
 
-.container {
+.users-container {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }

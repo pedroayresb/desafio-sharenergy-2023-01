@@ -19,7 +19,7 @@ function ClientItem(props: props) {
   };
 
   return (
-    <tr key={ props.index } className='bg-dark-offwhite h-52'>
+    <tr key={ props.index } className='bg-dark-offwhite flex flex-col'>
       <td className='p-10'>{ props.client.name }</td>
       <td className='p-10'>{ props.client.cpf }</td>
       <td className='p-10'>
@@ -37,13 +37,13 @@ function ClientItem(props: props) {
           <p key={ index }>{ address }</p>
         ))}
       </td>
-      <td className='p-10'>
+      <td className='p-10 grid items-center justify-center align-center'>
         <EditClientItem
           client={ props.client }
           index= { props.index }
         />
       </td>
-      <td className='p-11 grid items-center justify-center align-center h-52'>
+      <td className='p-10 grid items-center justify-center align-center'>
         <button
           className='bg-red hover:bg-dark-red text-white font-bold py-2 px-4 rounded'
           onClick = { () => { removeItem(props.client._id) } }

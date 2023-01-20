@@ -1,41 +1,33 @@
 import React, { useState, useContext } from "react";
+import { Accounts } from "meteor/accounts-base";
 import { Meteor } from "meteor/meteor";
 import { useNavigate } from "react-router-dom";
-import { useCookies } from "react-cookie";
 import Context from "../context/Context";
 import { ContextInterface } from "../interfaces/ContextInterface";
 import { formsTranslation } from "../utils/formsTranslation"; // arquivo com as traduções
+import crypto from 'crypto';
 
 function LoginForm() {
   const navigate = useNavigate();
-  const { language, setNameForLogin, setPasswordForLogin } = useContext(Context) as ContextInterface;
+  const { language } = useContext(Context) as ContextInterface;
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [remember, setRemember] = useState(false);
   const [error, setError] = useState("");
-  const [cookies, setCookie] = useCookies(["token"]);
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (remember) {
-      try {
-        Meteor.call('users.login', { name, password }, (error: any, result: any) => {
-          if (error) {
-            console.log(error);
-          } else {
-            setCookie('token', result, { maxAge: 999999999999999 }); // seta idade do cookie, porem por algum motivo so ta setando para um ano no maximo
-            navigate('/');
-          }
-        });
-      } catch (error: any) {
-        setError(error.response.data.error);
+    const hash = crypto.createHash('sha256').update(password).digest('base64').toString();;
+    Meteor.loginWithPassword(name, hash, (err: any) => {
+      if (err) {
+        setError(err.reason);
+      } else {
+        localStorage.setItem("logged", "true");
+        localStorage.setItem("remember", remember.toString());
+        navigate("/");
       }
-    } else {
-      setNameForLogin(name); // caso a pessoa nao queria ser lembrada, seta somente no contexto para ser usado no useEffect do Homepage.tsx
-      setPasswordForLogin(password);
-      navigate('/');
-    };
-  }
+    });
+  };
 
   const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setName(e.target.value);

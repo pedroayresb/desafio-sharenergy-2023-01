@@ -46,20 +46,22 @@ function EditArrayItem(props: props) { // componete que renderiza os itens de um
   return (
     <div className='flex flex-col'>
       {array.map((item, index) => (
-        <div key={ index } className='flex flex-row'>
+        <div key={ index } className='flex flex-row items-center'>
           <input 
             type='text'
             value={ item }
-            className="border border-yellow rounded-xl h-8 py-5 px-4 caret-dark-purple"
+            className="border border-yellow text-5xl mt-4 lg:h-8 py-5 px-4 caret-dark-purple"
             onChange={ (e: React.ChangeEvent<HTMLInputElement>) => changeArrayItem(e, index) }
           />
-          <button onClick={ () => removeArrayItem(index) }>X</button>  
+          <button
+            className='border rounded-full h-12 w-12 text-3xl text-dark-blue text-center hover:bg-white hover:text-dark-cyan hover:border-dark-cyan'
+            onClick={ () => removeArrayItem(index) }>X</button>  
         </div>
       ))}
       { props.arrayItem.length < 3 && <><input
         type='text'
         value={newItem}
-        className="border border-yellow rounded-xl h-8 py-5 px-4 caret-dark-purple"
+        className="border border-yellow text-5xl mt-4 lg:h-8 py-5 px-4 caret-dark-purple"
         onChange={(e: React.ChangeEvent<HTMLInputElement>) => setNewItem(e.target.value)} /><button onClick={(e) => submit(e)}>{clientPageTranslation[language].add}</button></> }
       <p>{ error }</p>
     </div>

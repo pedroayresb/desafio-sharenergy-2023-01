@@ -6,7 +6,7 @@ function PageButton() {
   const { page, setPage, randomFilteredUsers } = useContext(Context) as ContextInterface;
 
   return (
-    <div className="flex justify-center">
+    <div className="flex justify-center text-3xl">
       <button
         onClick={() => {
           page > 1 && setPage(page - 1);

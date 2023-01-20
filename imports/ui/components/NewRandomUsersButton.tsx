@@ -16,23 +16,25 @@ function RandomUsersContainer() {
   };
 
   return (
-    <div className='flex flex-row items-center m-4'>
-      <div className='flex flex-col items-center'>
+    <div className='flex flex-row m-4'>
+      <div className='flex flex-col items-center text-5xl'>
         <label htmlFor="quantity">{ homepageTranslation[language].quantity }: </label>
-        <input
-          type="number" 
-          value={ quantity } 
-          onChange={(e) => setQuantity(Number(e.target.value))}
-          className='border border-yellow h-8 py-5 px-4 rounded-tl-xl rounded-bl-xl text-dark-blue hover:border-light-cyan w-32 text-center'
-        />
+        <div className='m-4'>
+          <input
+            type="number" 
+            value={ quantity } 
+            onChange={(e) => setQuantity(Number(e.target.value))}
+            className='text-5xl py-5 px-4 w-72 rounded-tl-xl rounded-bl-xl text-dark-blue hover:border-light-cyan text-center'
+          />
+          <button
+            type="button"
+            className=" rounded-tr-xl p-6 rounded-br-xl text-5xl bg-yellow text-dark-blue text-center hover:bg-white hover:text-dark-cyan self-end"
+            onClick={() => getUsers( quantity )}
+          >
+            { homepageTranslation[language].getUsers }
+          </button>
+        </div>
       </div>
-      <button
-        type="button"
-        className="border border-yellow rounded-tr-xl rounded-br-xl h-10.5 bg-yellow text-dark-blue text-center text-sm hover:bg-white hover:text-dark-cyan self-end"
-        onClick={() => getUsers( quantity )}
-      >
-        { homepageTranslation[language].getUsers }
-      </button>
     </div>
   );
 }

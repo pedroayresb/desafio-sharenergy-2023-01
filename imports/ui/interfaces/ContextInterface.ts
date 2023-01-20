@@ -1,6 +1,6 @@
 interface UserInterface {
-  _id: string;
-  name: string;
+  _id?: string | undefined;
+  username?: string | undefined;
 };
 
 interface Results {
@@ -63,18 +63,12 @@ interface Results {
 interface ContextInterface {
   language: string;
   setLanguage: React.Dispatch<React.SetStateAction<string>>;
-  user: UserInterface | null;
-  setUser: React.Dispatch<React.SetStateAction<UserInterface | null>>;
   randomUsers: Results[] | null;
   setRandomUsers: React.Dispatch<React.SetStateAction<Results[] | null>>;
   randomFilteredUsers: Results[] | null;
   setRandomFilteredUsers: React.Dispatch<React.SetStateAction<Results[] | null>>;
   page: number;
   setPage: React.Dispatch<React.SetStateAction<number>>;
-  nameForLogin: string | null;
-  setNameForLogin: React.Dispatch<React.SetStateAction<string | null>>;
-  passwordForLogin: string | null;
-  setPasswordForLogin: React.Dispatch<React.SetStateAction<string | null>>;
 };
 
 export { ContextInterface, UserInterface, Results };

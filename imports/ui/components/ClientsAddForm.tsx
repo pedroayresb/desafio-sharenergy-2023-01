@@ -58,14 +58,14 @@ function ClientsAddForm() {
     <>
       <button
         onClick={() => setOpen(true)}
-        className='border border-yellow rounded-xl px-12 py-4 text-3xl bg-yellow text-dark-blue text-center hover:bg-white hover:text-dark-cyan hover:border-dark-cyan'
+        className='border border-yellow rounded-xl px-12 py-4 text-3xl bg-yellow text-dark-blue text-center hover:bg-white hover:text-dark-cyan hover:border-dark-cyan self-center mt-14'
       >
       { clientPageTranslation[language].addClient }
       </button>
       <ReactModal
         isOpen={open}
         appElement={document.getElementById('react-target') as HTMLElement}
-        className='bg-white rounded-2xl w-5/6 h-5/6 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2'
+        className='bg-white rounded-2xl text-5xl w-5/6 h-5/6 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 overflow-scroll'
       >
         <button
           onClick={() => setOpen(false)}
@@ -80,7 +80,7 @@ function ClientsAddForm() {
               type="text"
               name="name"
               value={ name }
-              className="border border-yellow rounded-xl h-8 py-5 px-4 caret-dark-purple"
+              className="border border-yellow text-5xl mt-4 lg:h-8 py-5 px-4 caret-dark-purple"
               onChange={(e) => setName(e.target.value)}
             />
             { nameError && <p>{nameError}</p> }
@@ -91,7 +91,7 @@ function ClientsAddForm() {
               type="text"
               name="CPF"
               value={ cpf }
-              className="border border-yellow rounded-xl h-8 py-5 px-4 caret-dark-purple"
+              className="border border-yellow rounded-xl text-5xl mt-4 lg:h-8 py-5 px-4 caret-dark-purple"
               onChange={(e) => setCpf(e.target.value)}
             />
             { cpfError && <p>{cpfError}</p> }

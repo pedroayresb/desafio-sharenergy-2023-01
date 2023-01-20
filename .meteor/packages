@@ -24,3 +24,5 @@ aldeed:collection2
 dburles:factory
 hwillson:stub-collections
 ostrio:flow-router-extra
+meteortesting:mocha
+accounts-password

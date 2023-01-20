@@ -9,15 +9,15 @@ function RandomUsers(props: Results) {
   const { name, picture, cell, email, location, login,  dob } = props;
 
   return (
-    <div className="border border-cyan rounded-xl flex flex-row w-90 mt-5 bg-offwhite shadow-sm hover:shadow-xl">
-      <img src={picture.large} alt={name.first} className='rounded-full m-5'/>
-      <div className="card-body p-5">
+    <div className="border border-cyan rounded-xl flex flex-row w-11/12 mt-5 p-5 bg-offwhite shadow-sm hover:shadow-xl">
+      <img src={picture.large} alt={name.first} className='rounded-full w-52 h-52 self-center'/>
+      <div className="flex flex-col text-3xl p-5">
         <p>{ homepageTranslation[language].name }: { `${name.title}. ${name.first} ${name.last}` }</p>
-        <p>{ homepageTranslation[language].username }: { login.username }</p>
-        <p>{ homepageTranslation[language].phone }: { cell }</p>
-        <p>{ homepageTranslation[language].email }: { email }</p>
-        <p>{ `${location.city}, ${location.state}` }</p>
         <p>{ homepageTranslation[language].age }: { dob.age }</p>
+        <p>{ homepageTranslation[language].username }: { login.username }</p>
+        <p>{ homepageTranslation[language].email }: { email }</p>
+        <p>{ homepageTranslation[language].phone }: { cell }</p>
+        <p>{ `${location.city}, ${location.state}` }</p>
       </div>
     </div>
   );

@@ -12,10 +12,10 @@ interface props {
 function AddedClientsContainer(props: props) {
   const { language } = useContext(Context) as ContextInterface;
   return (
-    <div className='overflow-scroll h-96'>
-      <table>
-        <thead className='bg-dark-blue mt-4 text-white w-full sticky top-0'>
-          <tr>
+    <div className='overflow-x-scroll h-4/5 w-5/6 bg-dark-offwhite text-3xl self-center'>
+      <table className='flex flex-row'>
+        <thead className='bg-dark-blue h-full text-white sticky left-0'>
+          <tr className='flex flex-col h-full'>
             <th className='p-10'>{ clientPageTranslation[language].name }</th>
             <th className='p-10'>{ clientPageTranslation[language].cpf }</th>
             <th className='p-10'>{ clientPageTranslation[language].email }</th>
@@ -25,7 +25,7 @@ function AddedClientsContainer(props: props) {
             <th className='p-10'>{ clientPageTranslation[language].remove }</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody className='flex flex-row h-fulll'>
           {props.clients.map((client, index) => 
               <ClientItem
                 client={ client }

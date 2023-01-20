@@ -1,31 +1,26 @@
-import React, { useContext, useEffect } from 'react';
-import { Meteor } from "meteor/meteor";
+import React, { useEffect } from 'react';
+import { Meteor } from 'meteor/meteor';
 import { useSubscribe, useFind } from 'meteor/react-meteor-data';
 import { useNavigate } from 'react-router-dom';
-import Context from '../context/Context';
 import ClientsCollection from '../../api/ClientsCollection';
-import { ContextInterface } from '../interfaces/ContextInterface';
 import ClientsAddForm from '../components/ClientsAddForm';
 import NavigationButtons from '../components/NavigationButtons';
 import AddedClientsContainer from '../components/AddedClientsContainer';
-import { useCookies } from 'react-cookie';
 
 function ClientsPage() {
-  const { user, setUser } = useContext(Context) as ContextInterface;
-  const [cookies] = useCookies(['token']);
   const navigate = useNavigate();
 
-  useEffect(() => { // useEffect pra caso a pessoa decidir ir direto pra rota, para checar se realmente está logado
-    if (cookies) {
-      Meteor.call('users.loginWithToken', { token: cookies.token }, (error: any, result: any) => {
-        if (!error) {
-          delete result.password; // não precisa do password no contexto
-          setUser(result);
-        }
-      });
-    } else if (!user) {
-      navigate('/login')
-    };
+  useEffect(() => {
+    const rememberMe = localStorage.getItem('remember');
+    const meteorTokenExpire = localStorage.getItem('Meteor.loginTokenExpires');
+    const isExpired = new Date(meteorTokenExpire as string) < new Date();
+    if (rememberMe === 'true') {
+      const userInLocal = JSON.parse(localStorage.getItem('user') as string) as { name: string, password: string };
+      const { name, password } = userInLocal;
+      Meteor.loginWithPassword(name, password);
+    } else if (rememberMe === null || isExpired) {
+      navigate('/login');
+    }
   }, []);
 
   const isLoading = useSubscribe('clients'); // se inscreve nas publicacoes meteor de clients
@@ -36,9 +31,9 @@ function ClientsPage() {
   };
 
   return (
-    <div className="flex flex-col h-screen text-dark-blue bg-offwhite">
+    <div className="flex flex-col h-screen w-screen text-dark-blue bg-offwhite">
       <NavigationButtons />
-      <div className="grid place-items-center h-screen">
+      <div className="flex flex-col w-full h-full items-baseline">
         <AddedClientsContainer clients={ clients } />
         <ClientsAddForm />
       </div>
