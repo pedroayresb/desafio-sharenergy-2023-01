@@ -2,6 +2,8 @@
 
 Repositório destinado ao desafio realizado por Pedro Olympio Ayres Begnini para a vaga de desenvolvimento Web da SHARENERGY 2023/01
 
+LINK PARA A ENTREGA NO YOUTUNE: https://youtu.be/tuGEKGmxEao
+
 ## Sobre a SHARENERGY
 
 No ramo da produção de energia fotovoltaica, há a modalidade de produção compartilhada. Nessa modalidade, diferentes pessoas investem na construção de uma mesma usina fotovoltaica e dividem o retorno finaceiro referente à energia gerada pela usina.
