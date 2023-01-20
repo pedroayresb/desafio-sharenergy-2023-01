@@ -23,7 +23,7 @@ function ArrayInputs(props: props) {
         name={ props.name }
         value={ props.value }
         onChange={(e) => props.setString(e.target.value)}
-        className="border border-yellow rounded-xl text-5xl mt-4 lg:h-8 py-5 px-4 "
+        className="border border-yellow rounded-xl mt-4 lg:h-8 py-5 px-4"
       />
       { props.array.length < 3 && <button
         type='button'
@@ -32,10 +32,10 @@ function ArrayInputs(props: props) {
           const validateInputsResult = validateInputs[props.name](props.value);
           if (validateInputsResult) {
             setError(validateInputsResult);
-            return;
+          } else {
+            props.setArray([...props.array, props.value]);
+            props.setString('');
           }
-          props.setArray([...props.array, props.value]);
-          props.setString('');
         }}
         className='text-center mt-2 bg-dark-blue text-white border border-dark-blue rounded-xl hover:bg-white p-4 hover:text-dark-blue focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity'
       >

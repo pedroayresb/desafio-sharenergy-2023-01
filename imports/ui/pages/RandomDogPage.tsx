@@ -43,7 +43,7 @@ function RandomDog() {
       <div className="flex flex-col items-center justify-start h-full w-screen">
         <button
           onClick={() => getNewDog()}
-          className="border text-5xl border-dark-cyan rounded-xl p-4 bg-dark-cyan text-white text-center hover:bg-white hover:text-dark-cyan"
+          className="border text-5xl border-dark-cyan rounded-xl p-4 bg-dark-cyan text-white text-center hover:bg-white hover:text-dark-cyan lg:text-sm"
         >{ homepageTranslation[language].getNewDog }</button>
         <div className="flex flex-row items-center justify-center w-11/12 h-11/12 mt-6">
           { isVideo ? <video src={dog} className='max-w-full max-h-full' controls /> : <img src={dog} className='max-w-full max-h-full' alt="Random Dog" /> }

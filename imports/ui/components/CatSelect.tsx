@@ -34,11 +34,11 @@ function CatSelect(props: props) {
         type="text"
         placeholder={ homepageTranslation[language].searchByCode }
         onChange={(e) => setSelectedCat(e.target.value)}
-        className='text-5xl py-5 px-4 w-72 rounded-tl-xl rounded-bl-xl text-dark-blue hover:border-light-cyan text-center'
+        className='text-5xl py-5 px-4 w-72 rounded-tl-xl rounded-bl-xl text-dark-blue hover:border-light-cyan text-center lg:text-sm'
       />
       <button 
         onClick={() => handleClick(selectedCat)}
-        className="border border-cyan rounded-tr-xl p-6 rounded-br-xl text-5xl bg-cyan text-dark-blue text-center hover:bg-white hover:text-dark-cyan self-end"
+        className="border border-cyan rounded-tr-xl p-6 rounded-br-xl text-5xl bg-cyan text-dark-blue text-center hover:bg-white hover:text-dark-cyan self-end lg:text-sm lg:p-5"
       >
         { homepageTranslation[language].getCats }
       </button>
